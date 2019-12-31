@@ -1,23 +1,43 @@
 on: [push]
 
 jobs:
-  cloudfront:
+  s3:
+    name: Sync assets to S3
     runs-on: ubuntu-latest
-    name: Invalidate CloudFront cache
     steps:
       - name: Checkout
         uses: actions/checkout@v1
-      - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-east-1
-      # - name: CloudFront invalidation
-      #   uses: ./packages/cloudfront
+      # - name: Configure AWS Credentials
+      #   uses: aws-actions/configure-aws-credentials@v1
       #   with:
-      #     distribution-id: EMKUWBIVAK6PF
-      #     paths: |
-      #       /index.html
-      #       /error.html
-      #       /static/*
+      #     aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      #     aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      #     aws-region: us-east-1
+      - name: Sync to S3
+        uses: ./packages/s3
+        with:
+          local-path: packages/s3/dist
+          bucket-name: github-actions-028920223318-us-east-1
+          path-prefix: my/new/prefix
+          args: --delete
+  # cloudfront:
+  #   name: Invalidate CloudFront cache
+  #   needs: s3
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v1
+  #     - name: Configure AWS Credentials
+  #       uses: aws-actions/configure-aws-credentials@v1
+  #       with:
+  #         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  #         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  #         aws-region: us-east-1
+  #     - name: CloudFront invalidation
+  #       uses: ./packages/cloudfront
+  #       with:
+  #         distribution-id: EMKUWBIVAK6PF
+  #         paths: |
+  #           /index.html
+  #           /error.html
+  #           /static/*

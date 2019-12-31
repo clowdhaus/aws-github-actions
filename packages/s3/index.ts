@@ -1,15 +1,29 @@
 import * as core from '@actions/core';
+import { promises as fs } from 'fs';
+import stringArgv from 'string-argv';
 
-async function run(): Promise<void> {
+import { AwsCli } from './awscli';
+
+const run = async (): Promise<void> => {
   try {
-    // `who-to-greet` input defined in action metadata file
-    const nameToGreet: string = core.getInput('who-to-greet');
-    console.log(`Hello ${nameToGreet}!`);
-    const time = new Date().toTimeString();
-    core.setOutput('time', time);
+    // Inputs:
+    const localPath = core.getInput('local-path', { required: true });
+    const stat = await fs.lstat(localPath);
+    if (!stat.isDirectory()) {
+      core.error(`Error: sync API synchronizes a directory not a single file`);
+    }
+    const bucketName = core.getInput('bucket-name', { required: true });
+    const pathPrefix = core.getInput('path-prefix', { required: false });
+    const args = stringArgv(core.getInput('args', { required: false }).trim());
+
+    const s3Uri = `s3://${bucketName}/${pathPrefix}`;
+    const Aws = await AwsCli.getOrInstall();
+    await Aws.call(['s3', 'sync', localPath, s3Uri, ...args]);
   } catch (error) {
     core.setFailed(error.message);
   }
-}
+};
 
 run();
+
+export default run;
