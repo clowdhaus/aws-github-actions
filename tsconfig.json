@@ -1,7 +1,13 @@
 {
   "compilerOptions": {
     "target": "es2018",
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "skipLibCheck": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitAny": true,
+    "removeComments": false,
+    "preserveConstEnums": true
   },
   "include": ["packages/**/*.ts"],
   "exclude": ["node_modules"]
