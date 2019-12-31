@@ -1,7 +1,7 @@
 import * as core from "@actions/core";
 import * as CloudFront from "aws-sdk/clients/cloudfront";
 
-async function run() {
+const run = async (): Promise<void> => {
   try {
     // Inputs:
     // The distribution's id
@@ -14,8 +14,8 @@ async function run() {
       required: false
     });
     // A list of the paths that you want to invalidate
-    const paths = core.getInput("paths", { required: false }).split(/\r?[\n,]/);
-
+    const paths = core.getInput("paths", { required: false }).trim().split(/\r?[\n,]/);
+    console.log(`Invalidation paths: ${paths}`);
     let params = {
       DistributionId: distributionId,
       InvalidationBatch: {
@@ -31,9 +31,12 @@ async function run() {
     const invalidation = await cloudfront.createInvalidation(params).promise();
     const invalidationId = invalidation.Invalidation.Id;
     core.setOutput("invalidation-id", invalidationId);
+    console.log(`CloudFront invalidation id: ${invalidationId}`);
   } catch (error) {
     core.setFailed(error.message);
   }
 }
 
-run();
+run()
+
+export default run

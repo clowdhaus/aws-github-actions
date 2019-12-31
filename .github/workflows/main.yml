@@ -1,18 +1,23 @@
 on: [push]
 
 jobs:
-  hello_world_job:
+  cloudfront:
     runs-on: ubuntu-latest
-    name: A job to say hello
+    name: Invalidate CloudFront cache
     steps:
-      # To use this repository's private action, you must check out the repository
       - name: Checkout
         uses: actions/checkout@v1
-      - name: Hello world action step
-        uses: ./cargo # Uses an action in the root directory
-        id: hello
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
         with:
-          who-to-greet: 'Mona the Octocat'
-      # Use the output from the `hello` step
-      - name: Get the output time
-        run: echo "The time was ${{ steps.hello.outputs.time }}"
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+      - name: CloudFront invalidation
+        uses: ./packages/cloudfront
+        with:
+          distribution-id: EMKUWBIVAK6PF
+          paths: |
+            /index.html
+            /error.html
+            /static/*
