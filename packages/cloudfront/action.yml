@@ -1,13 +1,23 @@
-name: 'Hello World'
-description: 'Greet someone and record the time'
+name: 'AWS CloudFront cache invalidation GitHub action'
+description: 'Initiate CloudFront cache invalidation'
+branding:
+  icon: 'cloud'
+  color: 'orange'
 inputs:
-  who-to-greet:  # id of input
-    description: 'Who to greet'
+  distribution-id:
+    description: 'CloudFront distribution ID'
     required: true
-    default: 'World'
+  caller-reference:
+    description: 'Unique value used to identify invalidation request and prevent CloudFront from resubmitting identical request'
+    required: false
+    default: ${{ github.sha }}
+  paths:
+    description: 'A list of the paths to invalidate. List cannot be a native YAML array; use either mutline string or comma delimited'
+    required: false
+    default: '/*'
 outputs:
-  time: # id of output
-    description: 'The time we greeted you'
+  invalidation-id:
+    description: 'The identifier for the invalidation request'
 runs:
   using: 'node12'
   main: 'dist/index.js'

@@ -1,7 +1,7 @@
 {
   "name": "cloudfront",
   "version": "0.1.0",
-  "description": "Invoke AWS CloudFront API in GitHub Actions workflow",
+  "description": "Initiate CloudFront cache invalidation",
   "main": "index.ts",
   "dependencies": {
     "aws-sdk": "^2.596.0"
