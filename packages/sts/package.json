@@ -1,0 +1,18 @@
+{
+  "name": "sts",
+  "version": "0.1.0",
+  "description": "Configure AWS credentials for use with the AWS CLI and AWS SDKs",
+  "main": "index.ts",
+  "dependencies": {
+    "aws-sdk": "^2.596.0"
+  },
+  "devDependencies": {
+    "@types/node": "^13.1.2"
+  },
+  "scripts": {
+    "compile": "node ../../node_modules/@zeit/ncc/dist/ncc/cli.js build -m",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "clowd.haus",
+  "license": "Apache-2.0"
+}

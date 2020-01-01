@@ -30,7 +30,7 @@ const run = async (): Promise<void> => {
       },
     };
 
-    const cloudfront = new CloudFront({ apiVersion: '2019-03-26' });
+    const cloudfront = new CloudFront({ apiVersion: '2019-03-26', customUserAgent: 'aws-github-actions-cloudfront' });
     const invalidation = await cloudfront.createInvalidation(params).promise();
     const invalidationId = invalidation.Invalidation.Id;
     core.setOutput('invalidation-id', invalidationId);
