@@ -1,5 +1,5 @@
-name: 'AWS STS credential GitHub action'
-description: 'Configure AWS credentials for use with the AWS CLI and AWS SDKs'
+name: 'AWS IAM access credential GitHub action'
+description: 'Configure AWS IAM access credentials for use with the AWS CLI and AWS SDKs'
 branding:
   icon: 'cloud'
   color: 'orange'

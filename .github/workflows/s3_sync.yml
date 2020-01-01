@@ -1,0 +1,24 @@
+name: s3_sync
+
+on: [push]
+
+jobs:
+  s3-sync:
+    name: Sync assets to S3
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Configure AWS Credentials
+        uses: ./packages/iam_access_credentials
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+      - name: Sync to S3
+        uses: ./packages/s3_sync
+        with:
+          local-path: packages/s3_sync/dist
+          bucket-name: github-actions-028920223318-us-east-1
+          path-prefix: my/new/prefix
+          args: --delete

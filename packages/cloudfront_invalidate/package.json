@@ -1,15 +1,14 @@
 {
-  "name": "s3",
+  "name": "cloudfront-invalidate",
   "version": "0.1.0",
-  "description": "Upload generated artifacts to S3 bucket",
+  "description": "Initiate CloudFront cache invalidation",
   "main": "index.ts",
   "dependencies": {
-    "@actions/exec": "^1.0.2",
-    "@actions/io": "^1.0.1",
-    "@actions/tool-cache": "^1.1.2",
-    "string-argv": "^0.3.1"
+    "aws-sdk": "^2.596.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@types/node": "^13.1.2"
+  },
   "scripts": {
     "compile": "node ../../node_modules/@zeit/ncc/dist/ncc/cli.js build -m",
     "test": "echo \"Error: no test specified\" && exit 1"

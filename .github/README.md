@@ -4,6 +4,12 @@
 <h1 style="font-size: 56px; margin: 0; padding: 0;" align="center">
   aws-github-actions
 </h1>
+<p align="center">
+  <img src="https://badgen.net/badge/TypeScript/strict%20%F0%9F%92%AA/blue" alt="Strict TypeScript">
+  <img src="https://github.com/clowdhaus/aws-github-actions/workflows/iam_access_credentials/badge.svg" alt="IAM access credentials">
+  <img src="https://github.com/clowdhaus/aws-github-actions/workflows/s3_sync/badge.svg" alt="S3 sync">
+  <img src="https://github.com/clowdhaus/aws-github-actions/workflows/cloudfront_invalidate/badge.svg" alt="CloudFront invalidate">
+</p>
 
 GitHub actions for AWS services.
 

@@ -1,7 +1,7 @@
 {
-  "name": "cloudfront",
+  "name": "iam-access-credentials",
   "version": "0.1.0",
-  "description": "Initiate CloudFront cache invalidation",
+  "description": "Configure AWS IAM access credentials for use with the AWS CLI and AWS SDKs",
   "main": "index.ts",
   "dependencies": {
     "aws-sdk": "^2.596.0"
