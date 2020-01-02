@@ -1,7 +1,8 @@
 name: 'AWS IAM access credential GitHub action'
+author: 'Clowd Haus, LLC'
 description: 'Configure AWS IAM access credentials for use with the AWS CLI and AWS SDKs'
 branding:
-  icon: 'cloud'
+  icon: 'user-check'
   color: 'orange'
 inputs:
   aws-region:
@@ -19,15 +20,18 @@ inputs:
   mask-aws-account-id:
     description: 'Determine if AWS account ID should be hidden from stdout as a secret value'
     required: false
+    default: 'true'
   assume-role:
     description: 'Determine if role should be assumed to generate credentials'
     required: false
+    default: 'false'
   role-arn:
     description: 'The Amazon Resource Name (ARN) of the role to assume'
     required: false
   role-session-name:
     description: 'An identifier for the assumed role session'
     required: false
+    default: 'github-action-iam-access'
   duration-seconds:
     description: 'The duration, in seconds, of the role session'
     required: false

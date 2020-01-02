@@ -1,7 +1,7 @@
 name: 'AWS CloudFront cache invalidation GitHub action'
 description: 'Initiate CloudFront cache invalidation'
 branding:
-  icon: 'cloud'
+  icon: 'refresh-cw'
   color: 'orange'
 inputs:
   distribution-id:

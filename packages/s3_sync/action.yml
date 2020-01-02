@@ -1,7 +1,8 @@
 name: 'AWS S3 sync GitHub action'
-description: 'Sync locally generated artifacts to an S3 bucket'
+author: 'Clowd Haus, LLC'
+description: 'Sync local artifacts to an S3 bucket'
 branding:
-  icon: 'cloud'
+  icon: 'upload-cloud'
   color: 'orange'
 inputs:
   local-path:
