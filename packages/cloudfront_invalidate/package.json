@@ -1,5 +1,5 @@
 {
-  "name": "cloudfront-invalidate",
+  "name": "@aws-github-actions/cloudfront-invalidate",
   "version": "0.1.0",
   "description": "Initiate CloudFront cache invalidation",
   "main": "index.ts",

@@ -3,10 +3,17 @@
     "target": "es2018",
     "moduleResolution": "node",
     "skipLibCheck": true,
+
+    "removeComments": false,
+    // "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noImplicitAny": true,
-    "removeComments": false,
+    "noImplicitReturns": true,
     "preserveConstEnums": true
   },
   "include": ["packages/**/*.ts"],
