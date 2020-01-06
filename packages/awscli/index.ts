@@ -1,92 +1,35 @@
-import * as process from 'process';
-
-import * as io from '@actions/io';
 import * as core from '@actions/core';
-import * as exec from '@actions/exec';
-import * as tc from '@actions/tool-cache';
+import stringArgv from 'string-argv';
 
-export default class AwsCli {
-  private readonly path: string;
+import AwsCli from '@aws-github-actions/awscli-core';
 
-  private constructor(exePath: string) {
-    this.path = exePath;
+const run = async (): Promise<void> => {
+  try {
+    // Inputs:
+    const cliCommand = core.getInput('cli-command', { required: true });
+    const cliSubcommand = core.getInput('cli-subcommand', { required: true });
+    const cliOptions = stringArgv(core.getInput('cli-options', { required: false }).trim());
+    const cliParameters = stringArgv(core.getInput('cli-parameters', { required: false }).trim());
+    const awsRegion = core.getInput('aws-region', { required: true });
+
+    console.log(cliCommand);
+    console.log(cliSubcommand);
+    console.log(...cliOptions);
+    console.log(...cliParameters);
+    console.log(awsRegion);
+
+    const Aws = await AwsCli.getOrInstall();
+    // aws [options] <command> <subcommand> [parameters]
+    const params = [...cliOptions, cliCommand, cliSubcommand, ...cliParameters, '--region', awsRegion];
+    console.log(params);
+    const result = await Aws.callStdout(params);
+    console.log(result);
+    core.setOutput('cli-output', result);
+  } catch (error) {
+    core.setFailed(error.message);
   }
+};
 
-  public static async getOrInstall(): Promise<AwsCli> {
-    try {
-      return await AwsCli.get();
-    } catch (error) {
-      core.debug(`Unable to find "awscli" executable, installing it now. Reason: ${error}`);
-      return await AwsCli.install();
-    }
-  }
+run();
 
-  // Will throw an error if `aws` is not installed.
-  public static async get(): Promise<AwsCli> {
-    const exePath = await io.which('aws', true);
-
-    return new AwsCli(exePath);
-  }
-
-  private static async install(): Promise<AwsCli> {
-    switch (process.platform) {
-      case 'darwin':
-      case 'linux': {
-        const AwsCliWheelPath = await tc.downloadTool(
-          'https://files.pythonhosted.org/packages/99/55/6c020e22f81b2b76a1295b07ac92aa4f9aaf44dcb9cead89a6a24a3d828c/awscli-1.16.309-py2.py3-none-any.whl',
-        );
-        await exec.exec('pip', ['install', '--use-wheel', '--no-index', `--find-links=${AwsCliWheelPath}`, 'awscli']);
-        break;
-      }
-
-      case 'win32': {
-        const AwsCliMsiPath = await tc.downloadTool('https://s3.amazonaws.com/aws-cli/AWSCLI64PY3.msi');
-        await exec.exec('msiexec.exe', ['/I', AwsCliMsiPath]);
-        break;
-      }
-
-      default:
-        throw new Error(`Unknown platform ${process.platform}, can't install awscli`);
-    }
-
-    // Assuming it is in the $PATH already
-    return new AwsCli('aws');
-  }
-
-  public async version(): Promise<string> {
-    const stdout = await this.callStdout(['--version']);
-
-    return stdout.split(' ')[1];
-  }
-
-  // awscli which `program`
-  public async which(program: string): Promise<string> {
-    const stdout = await this.callStdout(['which', program]);
-
-    if (stdout) {
-      return stdout;
-    } else {
-      throw new Error(`Unable to find the ${program}`);
-    }
-  }
-
-  public async call(args: string[], options?: {}): Promise<number> {
-    return await exec.exec(this.path, args, options);
-  }
-
-  // Call the `awscli` and return stdout
-  async callStdout(args: string[], options?: {}): Promise<string> {
-    let stdout = '';
-    const resOptions = Object.assign({}, options, {
-      listeners: {
-        stdout: (buffer: Buffer) => {
-          stdout += buffer.toString();
-        },
-      },
-    });
-
-    await this.call(args, resOptions);
-
-    return stdout;
-  }
-}
+export default run;

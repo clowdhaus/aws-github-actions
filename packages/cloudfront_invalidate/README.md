@@ -5,7 +5,7 @@
   CloudFront Invalidate
 </h1>
 <p align="center">
-  <img src="https://github.com/clowdhaus/aws-github-actions/workflows/cloudfront_invalidate/badge.svg" alt="CloudFront invalidate">
+  <img src="https://github.com/clowdhaus/aws-github-actions/workflows/CloudFront%20Invalidation/badge.svg" alt="CloudFront invalidate">
 </p>
 
 The `cloudfront_invalidate` GitHub action creates an invalidation request for an AWS CloudFront distribution. This is typically performed after new content is pushed to the CloudFront origin (S3, ALB, etc.) and you wish to have that new content updated in the CDN caches right away.

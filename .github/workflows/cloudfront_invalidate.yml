@@ -1,6 +1,9 @@
-name: cloudfront_invalidate
+name: 'CloudFront Invalidation'
 
-on: [push]
+on:
+  push:
+    branches:
+      - master
 
 jobs:
   cloudfront-invalidate:

@@ -5,7 +5,7 @@
   S3 Sync
 </h1>
 <p align="center">
-  <img src="https://github.com/clowdhaus/aws-github-actions/workflows/s3_sync/badge.svg" alt="S3 sync">
+  <img src="https://github.com/clowdhaus/aws-github-actions/workflows/S3%20Sync/badge.svg" alt="S3 sync">
 </p>
 
 The `s3_sync` GitHub action will synchronize a local directory to an AWS S3 bucket. Recursively copies new and updated files from the source directory to the destination. Only creates folders in the destination if they contain one or more files.

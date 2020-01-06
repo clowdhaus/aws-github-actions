@@ -2,7 +2,7 @@ import * as core from '@actions/core';
 import { promises as fs } from 'fs';
 import stringArgv from 'string-argv';
 
-import AwsCli from '@aws-github-actions/awscli';
+import AwsCli from '@aws-github-actions/awscli-core';
 
 const run = async (): Promise<void> => {
   try {

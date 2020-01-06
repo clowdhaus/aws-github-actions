@@ -5,21 +5,26 @@
   aws-github-actions
 </h1>
 <p align="center">
+  <img src="https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg" alt="Maintained with lerna">
   <img src="https://badgen.net/badge/TypeScript/strict%20%F0%9F%92%AA/blue" alt="Strict TypeScript">
+  <img src="https://img.shields.io/badge/commitizen-friendly-brightgreen.svg" alt="Commitizen Friendly">
+  <img src="https://snyk.io/test/github/clowdhaus/aws-github-actions/master/badge.svg" alt="Known Vulnerabilities">
 </p>
 
 Collection of GitHub actions for interacting with AWS services.
 
-| Action                                                       | Local Action Tests                                                                                                    |
-| ------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------- |
-| [CloudFront Invalidate](../packages/cloudfront_invalidate)   | ![CloudFront Invalidate](https://github.com/clowdhaus/aws-github-actions/workflows/cloudfront_invalidate/badge.svg)   |
-| [IAM Access Credentials](../packages/iam_access_credentials) | ![IAM Access Credentials](https://github.com/clowdhaus/aws-github-actions/workflows/iam_access_credentials/badge.svg) |
-| [S3 Sync](../packages/s3_sync)                               | ![S3 Sync](https://github.com/clowdhaus/aws-github-actions/workflows/s3_sync/badge.svg)                               |
+| Action                                                                          | Local Action Tests                                                                                                      |
+| ------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| [`clowdhaus/awscli@master`](../packages/awscli)                                 | ![AWS Command Line Interface](https://github.com/clowdhaus/aws-github-actions/workflows/awscli/badge.svg)               |
+| [`clowdhaus/cloudfront_invalidate@master`](../packages/cloudfront_invalidate)   | ![CloudFront Invalidate](https://github.com/clowdhaus/aws-github-actions/workflows/CloudFront%20Invalidation/badge.svg) |
+| [`clowdhaus/iam_access_credentials@master`](../packages/iam_access_credentials) | ![IAM Access Credentials](https://github.com/clowdhaus/aws-github-actions/workflows/IAM%20Credentials/badge.svg)        |
+| [`clowdhaus/s3_sync@master`](../packages/s3_sync)                               | ![S3 Sync](https://github.com/clowdhaus/aws-github-actions/workflows/S3%20Sync/badge.svg)                               |
 
 ## Usage
 
 See individual action directory for details on usage and examples.
 
+- [AWS Command Line Interface](../pacakges/awscli) - execute awscli commands
 - [CloudFront Invalidate](../packages/cloudfront_invalidate) - invalidate AWS CloudFront distribution to force cache refresh
 - [IAM Access Credentials](../packages/iam_access_credentials) - ensure GitHub actions workflow environment has necessary AWS IAM credentials available for subsequent AWS actions
 - [S3 Sync](../packages/s3_sync) - synchronize local files to remote AWS S3 bucket

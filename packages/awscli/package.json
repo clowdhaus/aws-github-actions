@@ -2,16 +2,13 @@
   "name": "@aws-github-actions/awscli",
   "version": "0.1.0",
   "description": "Wrapper for awscli",
-  "main": "lib/index.js",
-  "typings": "lib/index.d.ts",
+  "main": "index.ts",
   "dependencies": {
-    "@actions/exec": "^1.0.2",
-    "@actions/io": "^1.0.1",
-    "@actions/tool-cache": "^1.1.2"
+    "@aws-github-actions/awscli-core": "v0.1.0",
+    "string-argv": "^0.3.1"
   },
   "devDependencies": {},
   "scripts": {
-    "build": "tsc ./index.ts --outDir lib",
     "compile": "node ../../node_modules/@zeit/ncc/dist/ncc/cli.js build -m",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
