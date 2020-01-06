@@ -1,6 +1,9 @@
-name: s3_sync
+name: 'S3 Sync'
 
-on: [push]
+on:
+  push:
+    branches:
+      - master
 
 jobs:
   s3-sync:

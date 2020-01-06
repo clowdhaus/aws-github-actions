@@ -25,7 +25,7 @@
   ],
   "scripts": {
     "test": "lerna run test",
-    "compile": "lerna run compile",
+    "compile": "lerna run build && lerna run compile",
     "lint": "tsc --noEmit && eslint '*/**/*.{js,ts}' --quiet --fix",
     "new-version": "lerna version --conventional-commits --yes",
     "diff": "lerna diff",
@@ -35,17 +35,17 @@
     "@actions/core": "^1.2.0"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^2.14.0",
-    "@typescript-eslint/parser": "^2.14.0",
-    "@zeit/ncc": "^0.20.5",
+    "@typescript-eslint/eslint-plugin": "^2.15.0",
+    "@typescript-eslint/parser": "^2.15.0",
+    "@zeit/ncc": "^0.21.0",
     "commitizen": "^4.0.3",
-    "cz-conventional-changelog": "3.0.2",
+    "cz-conventional-changelog": "^3.0.2",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.9.0",
     "eslint-plugin-prettier": "^3.1.2",
     "husky": "^3.1.0",
-    "lerna": "^3.20.1",
-    "lint-staged": "^10.0.0-beta.14",
+    "lerna": "^3.20.2",
+    "lint-staged": "^9.5.0",
     "prettier": "^1.19.1",
     "typescript": "^3.7.4"
   },

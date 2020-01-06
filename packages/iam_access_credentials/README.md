@@ -5,7 +5,7 @@
   IAM Access Credentials
 </h1>
 <p align="center">
-  <img src="https://github.com/clowdhaus/aws-github-actions/workflows/iam_access_credentials/badge.svg" alt="IAM access credentials">
+  <img src="https://github.com/clowdhaus/aws-github-actions/workflows/IAM%20Credentials/badge.svg" alt="IAM access credentials">
 </p>
 
 The `iam_access_credentials` GitHub action will configure the workflow environment with the necessary IAM access credentials as requested (via environment variables).
