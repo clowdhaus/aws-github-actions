@@ -1,13 +1,12 @@
 {
   "name": "@aws-github-actions/awscli",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Wrapper for awscli",
   "main": "index.ts",
   "dependencies": {
     "@aws-github-actions/awscli-core": "v0.1.0",
     "string-argv": "^0.3.1"
   },
-  "devDependencies": {},
   "scripts": {
     "compile": "node ../../node_modules/@zeit/ncc/dist/ncc/cli.js build -m",
     "test": "echo \"Error: no test specified\" && exit 1"
