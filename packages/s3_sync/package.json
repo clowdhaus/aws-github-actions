@@ -1,6 +1,6 @@
 {
   "name": "@aws-github-actions/s3-sync",
-  "version": "0.1.0",
+  "version": "0.0.0",
   "description": "Sync locally generated artifacts to an S3 bucket",
   "main": "index.ts",
   "dependencies": {
