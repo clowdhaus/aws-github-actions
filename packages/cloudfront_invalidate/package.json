@@ -4,7 +4,8 @@
   "description": "Initiate CloudFront cache invalidation",
   "main": "index.ts",
   "dependencies": {
-    "aws-sdk": "^2.598.0"
+    "@types/node": "^13.7.1",
+    "aws-sdk": "^2.619.0"
   },
   "devDependencies": {
     "@types/node": "^13.1.4"
