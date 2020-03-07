@@ -12,12 +12,12 @@
 
 Collection of GitHub actions for interacting with AWS services.
 
-| Action                                                                          | Local Action Tests                                                                                                      |
-| ------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| [`clowdhaus/awscli@master`](../packages/awscli)                                 | ![AWS Command Line Interface](https://github.com/clowdhaus/aws-github-actions/workflows/awscli/badge.svg)               |
-| [`clowdhaus/cloudfront_invalidate@master`](../packages/cloudfront_invalidate)   | ![CloudFront Invalidate](https://github.com/clowdhaus/aws-github-actions/workflows/CloudFront%20Invalidation/badge.svg) |
-| [`clowdhaus/iam_access_credentials@master`](../packages/iam_access_credentials) | ![IAM Access Credentials](https://github.com/clowdhaus/aws-github-actions/workflows/IAM%20Credentials/badge.svg)        |
-| [`clowdhaus/s3_sync@master`](../packages/s3_sync)                               | ![S3 Sync](https://github.com/clowdhaus/aws-github-actions/workflows/S3%20Sync/badge.svg)                               |
+| Action                                                                                   | Local Action Tests                                                                                                      |
+| ---------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| [`clowdhaus/packages/awscli@master`](../packages/awscli)                                 | ![AWS Command Line Interface](https://github.com/clowdhaus/aws-github-actions/workflows/awscli/badge.svg)               |
+| [`clowdhaus/packages/cloudfront_invalidate@master`](../packages/cloudfront_invalidate)   | ![CloudFront Invalidate](https://github.com/clowdhaus/aws-github-actions/workflows/CloudFront%20Invalidation/badge.svg) |
+| [`clowdhaus/packages/iam_access_credentials@master`](../packages/iam_access_credentials) | ![IAM Access Credentials](https://github.com/clowdhaus/aws-github-actions/workflows/IAM%20Credentials/badge.svg)        |
+| [`clowdhaus/packages/s3_sync@master`](../packages/s3_sync)                               | ![S3 Sync](https://github.com/clowdhaus/aws-github-actions/workflows/S3%20Sync/badge.svg)                               |
 
 ## Usage
 

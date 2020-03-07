@@ -15,7 +15,7 @@ Note: The sync action works on directories only, not individual files, and can b
 ## Usage
 
 ```yml
-- uses: clowdhaus/s3_sync@v0.1
+- uses: clowdhaus/packages/s3_sync@v0.2
   with:
     # Path to local directory to synchronize, starting from project root directory
     # Required: true
@@ -42,7 +42,7 @@ Note: The sync action works on directories only, not individual files, and can b
 ### Sync to root of S3 bucket
 
 ```yml
-- uses: clowdhaus/s3_sync@v0.1
+- uses: clowdhaus/packages/s3_sync@v0.2
   with:
     local-path: dist/
     bucket-name: my-s3-bucket
@@ -51,7 +51,7 @@ Note: The sync action works on directories only, not individual files, and can b
 ### Sync to S3 bucket prefix
 
 ```yml
-- uses: clowdhaus/s3_sync@v0.1
+- uses: clowdhaus/packages/s3_sync@v0.2
   with:
     local-path: dist/
     bucket-name: my-s3-bucket
@@ -61,7 +61,7 @@ Note: The sync action works on directories only, not individual files, and can b
 ### Sync to S3 bucket prefix & delete files not in source
 
 ```yml
-- uses: clowdhaus/s3_sync@v0.1
+- uses: clowdhaus/packages/s3_sync@v0.2
   with:
     local-path: dist/
     bucket-name: my-s3-bucket
@@ -75,7 +75,7 @@ Only syncs `*.js` files in `dist/` directory and delete those no longer found fr
 Note: order of args dictates precedence - see [documentation](https://docs.aws.amazon.com/cli/latest/reference/s3/index.html#use-of-exclude-and-include-filters)
 
 ```yml
-- uses: clowdhaus/s3_sync@v0.1
+- uses: clowdhaus/packages/s3_sync@v0.2
   with:
     local-path: dist/
     bucket-name: my-s3-bucket

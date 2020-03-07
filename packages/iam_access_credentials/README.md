@@ -13,7 +13,7 @@ The `iam_access_credentials` GitHub action will configure the workflow environme
 ## Usage
 
 ```yml
-- uses: clowdhaus/iam_access_credentials@v0.1
+- uses: clowdhaus/packages/iam_access_credentials@v0.2
   with:
     # AWS Region to send the request to. If defined, this environment variable overrides
     # the value for the profile setting region
@@ -62,7 +62,7 @@ The `iam_access_credentials` GitHub action will configure the workflow environme
 ### Standard setup of access credentials from GitHub secrets
 
 ```yml
-- uses: clowdhaus/iam_access_credentials@v0.1
+- uses: clowdhaus/packages/iam_access_credentials@v0.2
   with:
     aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
     aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -72,7 +72,7 @@ The `iam_access_credentials` GitHub action will configure the workflow environme
 ### Use credentials from assumed IAM role
 
 ```yml
-- uses: clowdhaus/s3_sync@v0.1
+- uses: clowdhaus/packages/s3_sync@v0.2
   with:
     aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
     aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -84,7 +84,7 @@ The `iam_access_credentials` GitHub action will configure the workflow environme
 ### Use credentials from assumed IAM role with extneral ID
 
 ```yml
-- uses: clowdhaus/s3_sync@v0.1
+- uses: clowdhaus/packages/s3_sync@v0.2
   with:
     aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
     aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
