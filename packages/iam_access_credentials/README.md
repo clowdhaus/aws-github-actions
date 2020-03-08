@@ -81,7 +81,7 @@ The `iam_access_credentials` GitHub action will configure the workflow environme
     role-arn: arn:aws:iam::123425678910:role/cross-account
 ```
 
-### Use credentials from assumed IAM role with extneral ID
+### Use credentials from assumed IAM role with external ID
 
 ```yml
 - uses: clowdhaus/packages/s3_sync@v0.2
