@@ -23,7 +23,7 @@ Collection of GitHub actions for interacting with AWS services.
 
 See individual action directory for details on usage and examples.
 
-- [AWS Command Line Interface](../pacakges/awscli) - execute awscli commands
+- [AWS Command Line Interface](../packages/awscli) - execute awscli commands
 - [CloudFront Invalidate](../packages/cloudfront_invalidate) - invalidate AWS CloudFront distribution to force cache refresh
 - [IAM Access Credentials](../packages/iam_access_credentials) - ensure GitHub actions workflow environment has necessary AWS IAM credentials available for subsequent AWS actions
 - [S3 Sync](../packages/s3_sync) - synchronize local files to remote AWS S3 bucket
@@ -47,7 +47,7 @@ See [here](https://yarnpkg.com/en/docs/install#debian-stable) for instructions o
 
 #### [lerna](https://github.com/lerna/lerna)
 
-`lerna` is used to managed the project as a monorepo - where each action is packaged and managed individually, and some pacakges are internal modules shared across the actions.
+`lerna` is used to managed the project as a monorepo - where each action is packaged and managed individually, and some packages are internal modules shared across the actions.
 
 To install lernal locally on your machine, it is recommended to install globally via npm or yarn:
 
@@ -67,8 +67,8 @@ Note: You may come across the comand sequence `lerna bootstrap` in the `lerna` d
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct and the process for submitting pull requests.
+Please read [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) for details on our code of conduct and the process for submitting pull requests.
 
 ## Changelog
 
-Please see the [CHANGELOG.md](CHANGELOG.md) for details on individual releases.
+Please see the [CHANGELOG.md](../CHANGELOG.md) for details on individual releases.
