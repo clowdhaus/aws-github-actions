@@ -3,14 +3,12 @@
     "target": "es2018",
     "moduleResolution": "node",
     "skipLibCheck": true,
-
     "removeComments": false,
     // "strictNullChecks": true,
     "strictFunctionTypes": true,
-    // "noImplicitAny": true,
+    "noImplicitAny": true,
     "noImplicitThis": true,
     "alwaysStrict": true,
-
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,

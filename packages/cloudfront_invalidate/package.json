@@ -4,10 +4,10 @@
   "description": "Initiate CloudFront cache invalidation",
   "main": "index.ts",
   "dependencies": {
-    "aws-sdk": "^2.635.0"
+    "aws-sdk": "^2.639.0"
   },
   "devDependencies": {
-    "@types/node": "^13.9.0"
+    "@types/node": "^13.9.1"
   },
   "scripts": {
     "compile": "node ../../node_modules/@zeit/ncc/dist/ncc/cli.js build -m",

@@ -7,6 +7,7 @@
 <p align="center">
   <img src="https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg" alt="Maintained with lerna">
   <img src="https://badgen.net/badge/TypeScript/strict%20%F0%9F%92%AA/blue" alt="Strict TypeScript">
+  <img src="https://img.shields.io/badge/commitizen-friendly-brightgreen.svg" alt="Commitizen friendly">
   <img src="https://snyk.io/test/github/clowdhaus/aws-github-actions/master/badge.svg" alt="Known Vulnerabilities">
 </p>
 
