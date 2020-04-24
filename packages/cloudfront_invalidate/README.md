@@ -13,7 +13,7 @@ The `cloudfront_invalidate` GitHub action creates an invalidation request for an
 ## Usage
 
 ```yml
-- uses: clowdhaus/aws-github-actions/packages/cloudfront_invalidate@v0.2
+- uses: clowdhaus/aws-github-actions/packages/cloudfront_invalidate@v0.4
   with:
     # The CloudFront distribution ID
     # Required: true
@@ -39,7 +39,7 @@ The `cloudfront_invalidate` GitHub action creates an invalidation request for an
 ### Invalidate entire distribution
 
 ```yml
-- uses: clowdhaus/aws-github-actions/packages/cloudfront_invalidate@v0.2
+- uses: clowdhaus/aws-github-actions/packages/cloudfront_invalidate@v0.4
   with:
     distribution-id: E323PSTTFMI4A7
 ```
@@ -47,7 +47,7 @@ The `cloudfront_invalidate` GitHub action creates an invalidation request for an
 ### Invalidate multiple paths
 
 ```yml
-- uses: clowdhaus/aws-github-actions/packages/cloudfront_invalidate@v0.2
+- uses: clowdhaus/aws-github-actions/packages/cloudfront_invalidate@v0.4
   with:
     distribution-id: E323PSTTFMI4A7
     paths: |
