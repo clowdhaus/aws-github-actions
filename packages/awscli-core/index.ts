@@ -32,15 +32,14 @@ export default class AwsCli {
     switch (process.platform) {
       case 'darwin':
       case 'linux': {
-        const AwsCliWheelPath = await tc.downloadTool(
-          'https://files.pythonhosted.org/packages/99/55/6c020e22f81b2b76a1295b07ac92aa4f9aaf44dcb9cead89a6a24a3d828c/awscli-1.16.309-py2.py3-none-any.whl',
-        );
-        await exec.exec('pip', ['install', '--use-wheel', '--no-index', `--find-links=${AwsCliWheelPath}`, 'awscli']);
+        const AwsCliPath = await tc.downloadTool('https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip');
+        const AwsCliExtractedDir = await tc.extractZip(AwsCliPath);
+        core.addPath(AwsCliExtractedDir);
         break;
       }
 
       case 'win32': {
-        const AwsCliMsiPath = await tc.downloadTool('https://s3.amazonaws.com/aws-cli/AWSCLI64PY3.msi');
+        const AwsCliMsiPath = await tc.downloadTool('https://awscli.amazonaws.com/AWSCLIV2.msi');
         await exec.exec('msiexec.exe', ['/I', AwsCliMsiPath]);
         break;
       }
@@ -55,7 +54,6 @@ export default class AwsCli {
 
   public async version(): Promise<string> {
     const stdout = await this.callStdout(['--version']);
-
     return stdout.split(' ')[1];
   }
 
