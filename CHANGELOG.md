@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/clowdhaus/aws-github-actions/compare/v0.3.0...v0.4.0) (2020-04-24)
+
+
+### Features
+
+* **awscli:** upgrade awscli to v2 ([320481c](https://github.com/clowdhaus/aws-github-actions/commit/320481c27b2d6c9a26760a0fab75ad5222d39182))
+
+
+
+
+
 # 0.3.0 (2020-04-06)
 
 

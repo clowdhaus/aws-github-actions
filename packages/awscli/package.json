@@ -1,10 +1,10 @@
 {
   "name": "@aws-github-actions/awscli",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Wrapper for awscli",
   "main": "index.ts",
   "dependencies": {
-    "@aws-github-actions/awscli-core": "^0.3.0",
+    "@aws-github-actions/awscli-core": "^0.4.0",
     "string-argv": "^0.3.1"
   },
   "scripts": {
