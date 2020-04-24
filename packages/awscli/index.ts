@@ -12,18 +12,11 @@ const run = async (): Promise<void> => {
     const cliParameters = stringArgv(core.getInput('cli-parameters', { required: false }).trim());
     const awsRegion = core.getInput('aws-region', { required: true });
 
-    console.log(cliCommand);
-    console.log(cliSubcommand);
-    console.log(...cliOptions);
-    console.log(...cliParameters);
-    console.log(awsRegion);
-
     const Aws = await AwsCli.getOrInstall();
     // aws [options] <command> <subcommand> [parameters]
     const params = [...cliOptions, cliCommand, cliSubcommand, ...cliParameters, '--region', awsRegion];
-    console.log(params);
     const result = await Aws.callStdout(params);
-    console.log(result);
+
     core.setOutput('cli-output', result);
   } catch (error) {
     core.setFailed(error.message);

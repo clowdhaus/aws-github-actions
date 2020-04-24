@@ -3,7 +3,6 @@ import * as CloudFront from 'aws-sdk/clients/cloudfront';
 
 const run = async (): Promise<void> => {
   try {
-    // Inputs:
     // The distribution's id
     const distributionId = core.getInput('distribution-id', {
       required: true,
@@ -18,7 +17,7 @@ const run = async (): Promise<void> => {
       .getInput('paths', { required: false })
       .trim()
       .split(/\r?[\n,]/);
-    console.log(`Invalidation paths: ${paths}`);
+
     const params = {
       DistributionId: distributionId,
       InvalidationBatch: {
@@ -34,7 +33,6 @@ const run = async (): Promise<void> => {
     const invalidation = await cloudfront.createInvalidation(params).promise();
     const invalidationId = invalidation.Invalidation.Id;
     core.setOutput('invalidation-id', invalidationId);
-    console.log(`CloudFront invalidation id: ${invalidationId}`);
   } catch (error) {
     core.setFailed(error.message);
   }
