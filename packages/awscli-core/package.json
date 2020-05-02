@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "dependencies": {
-    "@actions/exec": "^1.0.3",
+    "@actions/exec": "^1.0.4",
     "@actions/io": "^1.0.2",
     "@actions/tool-cache": "^1.3.4"
   },
