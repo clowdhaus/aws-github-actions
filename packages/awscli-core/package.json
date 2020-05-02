@@ -1,6 +1,6 @@
 {
   "name": "@aws-github-actions/awscli-core",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Wrapper module for awscli",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
