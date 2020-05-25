@@ -68,12 +68,12 @@ export default class AwsCli {
     }
   }
 
-  public async call(args: string[], options?: {}): Promise<number> {
+  public async call(args: string[], options?: unknown): Promise<number> {
     return await exec.exec(this.path, args, options);
   }
 
   // Call the `awscli` and return stdout
-  async callStdout(args: string[], options?: {}): Promise<string> {
+  async callStdout(args: string[], options?: unknown): Promise<string> {
     let stdout = '';
     const resOptions = Object.assign({}, options, {
       listeners: {

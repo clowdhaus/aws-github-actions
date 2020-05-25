@@ -80,7 +80,7 @@ var AwsCli = /** @class */ (function () {
     };
     AwsCli.install = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var _a, AwsCliWheelPath, AwsCliMsiPath;
+            var _a, AwsCliPath, AwsCliExtractedDir, AwsCliMsiPath;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
@@ -91,14 +91,15 @@ var AwsCli = /** @class */ (function () {
                             case 'win32': return [3 /*break*/, 4];
                         }
                         return [3 /*break*/, 7];
-                    case 1: return [4 /*yield*/, tc.downloadTool('https://files.pythonhosted.org/packages/99/55/6c020e22f81b2b76a1295b07ac92aa4f9aaf44dcb9cead89a6a24a3d828c/awscli-1.16.309-py2.py3-none-any.whl')];
+                    case 1: return [4 /*yield*/, tc.downloadTool('https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip')];
                     case 2:
-                        AwsCliWheelPath = _b.sent();
-                        return [4 /*yield*/, exec.exec('pip', ['install', '--use-wheel', '--no-index', "--find-links=" + AwsCliWheelPath, 'awscli'])];
+                        AwsCliPath = _b.sent();
+                        return [4 /*yield*/, tc.extractZip(AwsCliPath)];
                     case 3:
-                        _b.sent();
+                        AwsCliExtractedDir = _b.sent();
+                        core.addPath(AwsCliExtractedDir);
                         return [3 /*break*/, 8];
-                    case 4: return [4 /*yield*/, tc.downloadTool('https://s3.amazonaws.com/aws-cli/AWSCLI64PY3.msi')];
+                    case 4: return [4 /*yield*/, tc.downloadTool('https://awscli.amazonaws.com/AWSCLIV2.msi')];
                     case 5:
                         AwsCliMsiPath = _b.sent();
                         return [4 /*yield*/, exec.exec('msiexec.exe', ['/I', AwsCliMsiPath])];
