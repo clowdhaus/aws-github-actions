@@ -1,6 +1,6 @@
 {
   "name": "aws-github-actions",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "description": "GitHub actions for AWS services",
   "repository": {
     "type": "git",
