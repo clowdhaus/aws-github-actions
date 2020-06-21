@@ -4,11 +4,26 @@ on:
   push:
     branches:
       - master
+    paths:
+      - 'packages/s3_sync/**'
+      - 'packages/awscli-core/**'
+      - 'package.json'
+
+  pull_request:
+    branches:
+      - master
+    paths:
+      - 'packages/s3_sync/**'
+      - 'packages/awscli-core/**'
+      - 'package.json'
 
 jobs:
   s3-sync:
     name: Sync assets to S3
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-latest, windows-latest, ubuntu-latest]
     steps:
       - name: Checkout
         uses: actions/checkout@v1
