@@ -4,10 +4,10 @@
   "description": "Configure AWS IAM access credentials for use with the AWS CLI and AWS SDKs",
   "main": "index.ts",
   "dependencies": {
-    "aws-sdk": "^2.683.0"
+    "aws-sdk": "^2.701.0"
   },
   "devDependencies": {
-    "@types/node": "^14.0.5"
+    "@types/node": "^14.0.13"
   },
   "scripts": {
     "compile": "node ../../node_modules/@zeit/ncc/dist/ncc/cli.js build -m",
