@@ -70,8 +70,16 @@ var AwsCli = /** @class */ (function () {
             var exePath;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, io.which('aws', true)];
+                    case 0:
+                        if (!(process.platform === 'win32')) return [3 /*break*/, 2];
+                        // Comes on windows runner provided by GitHub so remove
+                        return [4 /*yield*/, exec.exec('rmdir', ['/Q', '/S', '"C:/Program Files/Amazon"'])];
                     case 1:
+                        // Comes on windows runner provided by GitHub so remove
+                        _a.sent();
+                        _a.label = 2;
+                    case 2: return [4 /*yield*/, io.which('aws', true)];
+                    case 3:
                         exePath = _a.sent();
                         return [2 /*return*/, new AwsCli(exePath)];
                 }
@@ -102,7 +110,7 @@ var AwsCli = /** @class */ (function () {
                     case 4: return [4 /*yield*/, tc.downloadTool('https://awscli.amazonaws.com/AWSCLIV2.msi')];
                     case 5:
                         AwsCliMsiPath = _b.sent();
-                        return [4 /*yield*/, exec.exec('msiexec.exe', ['/I', AwsCliMsiPath])];
+                        return [4 /*yield*/, exec.exec('msiexec.exe', ['/i', AwsCliMsiPath, '/quiet'])];
                     case 6:
                         _b.sent();
                         return [3 /*break*/, 8];

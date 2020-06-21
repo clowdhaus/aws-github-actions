@@ -23,8 +23,11 @@ export default class AwsCli {
 
   // Will throw an error if `aws` is not installed.
   public static async get(): Promise<AwsCli> {
+    if (process.platform === 'win32') {
+      // Comes on windows runner provided by GitHub so remove
+      await exec.exec('rmdir', ['/Q', '/S', '"C:/Program Files/Amazon"']);
+    }
     const exePath = await io.which('aws', true);
-
     return new AwsCli(exePath);
   }
 
@@ -40,7 +43,7 @@ export default class AwsCli {
 
       case 'win32': {
         const AwsCliMsiPath = await tc.downloadTool('https://awscli.amazonaws.com/AWSCLIV2.msi');
-        await exec.exec('msiexec.exe', ['/I', AwsCliMsiPath]);
+        await exec.exec('msiexec.exe', ['/i', AwsCliMsiPath, '/quiet']);
         break;
       }
 
