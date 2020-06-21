@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.4](https://github.com/clowdhaus/aws-github-actions/compare/v0.4.3...v0.4.4) (2020-06-21)
+
+
+### Bug Fixes
+
+* fix actions on windows runners ([#6](https://github.com/clowdhaus/aws-github-actions/issues/6)) ([e7aac78](https://github.com/clowdhaus/aws-github-actions/commit/e7aac783e5d267e08234ee71bfbf42c966e3d0f2))
+
+
+### Features
+
+* add additional os testing with matrix strategy for all but cloudfront invalidation ([#5](https://github.com/clowdhaus/aws-github-actions/issues/5)) ([072d6ee](https://github.com/clowdhaus/aws-github-actions/commit/072d6eeae502e94883d3b24e7b809584ecccbb42))
+
+
+
+
+
 ## [0.4.3](https://github.com/clowdhaus/aws-github-actions/compare/v0.4.2...v0.4.3) (2020-06-21)
 
 **Note:** Version bump only for package aws-github-actions

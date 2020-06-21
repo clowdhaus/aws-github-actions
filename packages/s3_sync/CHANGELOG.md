@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.4](https://github.com/clowdhaus/aws-github-actions/compare/v0.4.3...v0.4.4) (2020-06-21)
+
+
+### Bug Fixes
+
+* fix actions on windows runners ([#6](https://github.com/clowdhaus/aws-github-actions/issues/6)) ([e7aac78](https://github.com/clowdhaus/aws-github-actions/commit/e7aac783e5d267e08234ee71bfbf42c966e3d0f2))
+
+
+
+
+
 ## [0.4.2](https://github.com/clowdhaus/aws-github-actions/compare/v0.4.1...v0.4.2) (2020-05-25)
 
 **Note:** Version bump only for package @aws-github-actions/s3-sync
