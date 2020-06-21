@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - master
+    paths:
+      - 'packages/cloudfront_invalidate/**'
+      - 'package.json'
 
 jobs:
   cloudfront-invalidate:
