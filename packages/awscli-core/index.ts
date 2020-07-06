@@ -1,5 +1,4 @@
 import * as process from 'process';
-
 import * as io from '@actions/io';
 import * as core from '@actions/core';
 import * as exec from '@actions/exec';
