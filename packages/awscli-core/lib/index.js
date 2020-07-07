@@ -102,7 +102,7 @@ var AwsCli = /** @class */ (function () {
                     case 1: return [4 /*yield*/, tc.downloadTool('https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip')];
                     case 2:
                         AwsCliPath = _b.sent();
-                        return [4 /*yield*/, tc.extractZip(AwsCliPath + '/aws/dist)];
+                        return [4 /*yield*/, tc.extractZip(AwsCliPath + '/aws/dist')];
                     case 3:
                         AwsCliExtractedDir = _b.sent();
                         core.addPath(AwsCliExtractedDir);
