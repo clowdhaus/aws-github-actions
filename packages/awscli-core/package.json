@@ -7,7 +7,7 @@
   "dependencies": {
     "@actions/exec": "^1.0.4",
     "@actions/io": "^1.0.2",
-    "@actions/tool-cache": "^1.5.5"
+    "@actions/tool-cache": "^1.6.0"
   },
   "scripts": {
     "build": "rm -f lib/* && tsc",
