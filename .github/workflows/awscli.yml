@@ -8,14 +8,13 @@ on:
       - 'packages/awscli/**'
       - 'packages/awscli-core/**'
       - 'package.json'
-
-  pull_request:
-    branches:
-      - master
-    paths:
-      - 'packages/awscli/**'
-      - 'packages/awscli-core/**'
-      - 'package.json'
+  # pull_request:
+  #   branches:
+  #     - master
+  #   paths:
+  #     - 'packages/awscli/**'
+  #     - 'packages/awscli-core/**'
+  #     - 'package.json'
 
 jobs:
   awscli:
