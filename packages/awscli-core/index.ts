@@ -37,7 +37,7 @@ export default class AwsCli {
       case 'linux': {
         const AwsCliPath = await tc.downloadTool('https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip');
         const AwsCliExtractedDir = await tc.extractZip(AwsCliPath);
-        core.addPath(AwsCliExtractedDir + '/aws/dist);
+        core.addPath(AwsCliExtractedDir + '/aws/dist');
         break;
       }
 
