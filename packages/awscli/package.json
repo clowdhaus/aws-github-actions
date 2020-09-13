@@ -1,6 +1,6 @@
 {
   "name": "@aws-github-actions/awscli",
-  "version": "0.4.5",
+  "version": "0.4.8",
   "description": "Wrapper for awscli",
   "main": "index.ts",
   "dependencies": {
