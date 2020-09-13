@@ -8,7 +8,7 @@
     "string-argv": "^0.3.1"
   },
   "scripts": {
-    "compile": "node ../../node_modules/@zeit/ncc/dist/ncc/cli.js build -m",
+    "compile": "ncc build -m",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "clowd.haus",
