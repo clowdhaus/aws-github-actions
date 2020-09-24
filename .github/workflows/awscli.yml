@@ -5,16 +5,9 @@ on:
     branches:
       - master
     paths:
-      - 'packages/awscli/**'
+      - 'awscli/**'
       - 'packages/awscli-core/**'
       - 'package.json'
-  # pull_request:
-  #   branches:
-  #     - master
-  #   paths:
-  #     - 'packages/awscli/**'
-  #     - 'packages/awscli-core/**'
-  #     - 'package.json'
 
 jobs:
   awscli:
@@ -27,13 +20,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v1
       - name: Configure AWS Credentials
-        uses: ./packages/iam_access_credentials
+        uses: ./iam_access_credentials
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
       - name: List us-east-1 DHCP option set values w/ default json output
-        uses: ./packages/awscli
+        uses: ./awscli
         with:
           cli-command: ec2
           cli-subcommand: describe-dhcp-options
@@ -41,7 +34,7 @@ jobs:
           aws-region: us-east-1
       - name: Get network interface subnet ID
         id: net-int-subnet-id
-        uses: ./packages/awscli
+        uses: ./awscli
         with:
           cli-command: ec2
           cli-subcommand: describe-network-interfaces
@@ -49,7 +42,7 @@ jobs:
           cli-parameters: --query NetworkInterfaces[0].SubnetId
           aws-region: us-east-1
       - name: Describe interface subnet ID
-        uses: ./packages/awscli
+        uses: ./awscli
         env:
           ACTIONS_RUNNER_DEBUG: true
         with:

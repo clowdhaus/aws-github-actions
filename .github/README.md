@@ -13,21 +13,21 @@
 
 Collection of GitHub actions for interacting with AWS services.
 
-| Action                                                                                                      | Local Action Tests                                                                                                      |
-| ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| [`clowdhaus/aws-github-actions/packages/awscli@master`](../packages/awscli)                                 | ![AWS Command Line Interface](https://github.com/clowdhaus/aws-github-actions/workflows/awscli/badge.svg)               |
-| [`clowdhaus/aws-github-actions/packages/cloudfront_invalidate@master`](../packages/cloudfront_invalidate)   | ![CloudFront Invalidate](https://github.com/clowdhaus/aws-github-actions/workflows/CloudFront%20Invalidation/badge.svg) |
-| [`clowdhaus/aws-github-actions/packages/iam_access_credentials@master`](../packages/iam_access_credentials) | ![IAM Access Credentials](https://github.com/clowdhaus/aws-github-actions/workflows/IAM%20Credentials/badge.svg)        |
-| [`clowdhaus/aws-github-actions/packages/s3_sync@master`](../packages/s3_sync)                               | ![S3 Sync](https://github.com/clowdhaus/aws-github-actions/workflows/S3%20Sync/badge.svg)                               |
+| Action                                                                                    | Local Action Tests                                                                                                      |
+| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| [`clowdhaus/aws-github-actions/awscli@master`](../awscli)                                 | ![AWS Command Line Interface](https://github.com/clowdhaus/aws-github-actions/workflows/awscli/badge.svg)               |
+| [`clowdhaus/aws-github-actions/cloudfront_invalidate@master`](../cloudfront_invalidate)   | ![CloudFront Invalidate](https://github.com/clowdhaus/aws-github-actions/workflows/CloudFront%20Invalidation/badge.svg) |
+| [`clowdhaus/aws-github-actions/iam_access_credentials@master`](../iam_access_credentials) | ![IAM Access Credentials](https://github.com/clowdhaus/aws-github-actions/workflows/IAM%20Credentials/badge.svg)        |
+| [`clowdhaus/aws-github-actions/s3_sync@master`](../s3_sync)                               | ![S3 Sync](https://github.com/clowdhaus/aws-github-actions/workflows/S3%20Sync/badge.svg)                               |
 
 ## Usage
 
 See individual action directory for details on usage and examples.
 
-- [AWS Command Line Interface](../packages/awscli) - execute awscli commands
-- [CloudFront Invalidate](../packages/cloudfront_invalidate) - invalidate AWS CloudFront distribution to force cache refresh
-- [IAM Access Credentials](../packages/iam_access_credentials) - ensure GitHub actions workflow environment has necessary AWS IAM credentials available for subsequent AWS actions
-- [S3 Sync](../packages/s3_sync) - synchronize local files to remote AWS S3 bucket
+- [AWS Command Line Interface](../awscli) - execute awscli commands
+- [CloudFront Invalidate](../cloudfront_invalidate) - invalidate AWS CloudFront distribution to force cache refresh
+- [IAM Access Credentials](../iam_access_credentials) - ensure GitHub actions workflow environment has necessary AWS IAM credentials available for subsequent AWS actions
+- [S3 Sync](../s3_sync) - synchronize local files to remote AWS S3 bucket
 
 ## Getting Started
 
@@ -50,7 +50,7 @@ See [here](https://yarnpkg.com/en/docs/install#debian-stable) for instructions o
 
 `lerna` is used to managed the project as a monorepo - where each action is packaged and managed individually, and some packages are internal modules shared across the actions.
 
-To install  locally on your machine, it is recommended to install globally via npm or yarn:
+To install locally on your machine, it is recommended to install globally via npm or yarn:
 
 ```bash
 $ npm install lerna --globally

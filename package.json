@@ -21,7 +21,11 @@
   "homepage": "https://github.com/clowdhaus/aws-github-actions#readme",
   "private": true,
   "workspaces": [
-    "packages/*"
+    "awscli",
+    "cloudfront_invalidate",
+    "iam_access_credentials",
+    "packages/*",
+    "s3_sync"
   ],
   "scripts": {
     "build": "lerna run build && lerna run compile",

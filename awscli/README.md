@@ -16,7 +16,7 @@ Reference - https://docs.aws.amazon.com/cli/latest/reference/index.html#cli-aws
 ## Usage
 
 ```yml
-- uses: clowdhaus/aws-github-actions/packages/awscli@v0.4
+- uses: clowdhaus/aws-github-actions/awscli@master
   with:
     # Command passed to awscli, which is infact the service that is the target of
     # your invocation <i.e. - ec2, s3, ebs, etc.>
@@ -47,7 +47,7 @@ Reference - https://docs.aws.amazon.com/cli/latest/reference/index.html#cli-aws
 ### Execute describe style command with standard json result output
 
 ```yml
-- uses: clowdhaus/aws-github-actions/packages/awscli@v0.4
+- uses: clowdhaus/aws-github-actions/awscli@master
   with:
     cli-command: ec2
     cli-subcommand: describe-dhcp-options
@@ -57,7 +57,7 @@ Reference - https://docs.aws.amazon.com/cli/latest/reference/index.html#cli-aws
 ### Execute describe style command with query and text output
 
 ```yml
-- uses: clowdhaus/aws-github-actions/packages/awscli@v0.4
+- uses: clowdhaus/aws-github-actions/awscli@master
   with:
     cli-command: ec2
     cli-subcommand: describe-network-interfaces
@@ -69,7 +69,7 @@ Reference - https://docs.aws.amazon.com/cli/latest/reference/index.html#cli-aws
 ### Execute describe style command using output from a prior describe command of ID `net-int-subnet-id`
 
 ```yml
-- uses: clowdhaus/aws-github-actions/packages/awscli@v0.4
+- uses: clowdhaus/aws-github-actions/awscli@master
   env:
     ACTIONS_RUNNER_DEBUG: true
   with:

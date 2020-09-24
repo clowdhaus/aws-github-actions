@@ -1,0 +1,33 @@
+name: release
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'awscli/**'
+      - 'cloudfront_invalidate/**'
+      - 'iam_access_credentials/**'
+      - 'pacakges/**'
+      - 's3_sync/**'
+      - 'package.json'
+
+jobs:
+  prTitle:
+    name: Release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2-beta
+        with:
+          node-version: '12'
+      - run: yarn install
+      - run: yarn run build
+      - run: yarn run release
+        env:
+          GIT_AUTHOR_NAME: claus-cli
+          GIT_COMMITTER_NAME: claus-cli
+          GIT_AUTHOR_EMAIL: ${{ secrets.EMAIL }}
+          GIT_COMMITTER_EMAIL: ${{ secrets.EMAIL }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
