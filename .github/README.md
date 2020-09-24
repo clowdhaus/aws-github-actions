@@ -50,7 +50,7 @@ See [here](https://yarnpkg.com/en/docs/install#debian-stable) for instructions o
 
 `lerna` is used to managed the project as a monorepo - where each action is packaged and managed individually, and some packages are internal modules shared across the actions.
 
-To install lernal locally on your machine, it is recommended to install globally via npm or yarn:
+To install  locally on your machine, it is recommended to install globally via npm or yarn:
 
 ```bash
 $ npm install lerna --globally
@@ -64,7 +64,7 @@ Once you have installed both `yarn` and `lerna`, you can install the project dep
   $ yarn
 ```
 
-Note: You may come across the comand sequence `lerna bootstrap` in the `lerna` documentation; this is equivalent to running `yarn` where both commands will pull down the necesary dependencies for the project and its packages.
+Note: You may come across the command sequence `lerna bootstrap` in the `lerna` documentation; this is equivalent to running `yarn` where both commands will pull down the necessary dependencies for the project and its packages.
 
 ## Contributing
 
