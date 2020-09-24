@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.5.0 (2020-09-24)
+
+
+* refactor!: move actions up to project root ([7739e2e](https://github.com/clowdhaus/aws-github-actions/commit/7739e2e8c37d412bc44faff493512f816c347ed2))
+
+
+### BREAKING CHANGES
+
+* action path has been changed to remove `packages/`
+
+
+
+
+
 ## [0.4.5](https://github.com/clowdhaus/aws-github-actions/compare/v0.4.4...v0.4.5) (2020-07-20)
 
 **Note:** Version bump only for package @aws-github-actions/awscli-core
