@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="../../.github/images/aws.png" alt="aws" height="128px">
+  <img src="../.github/images/aws.png" alt="aws" height="128px">
 </p>
 <h1 style="font-size: 56px; margin: 0; padding: 0;" align="center">
   awscli

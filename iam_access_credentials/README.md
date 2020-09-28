@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="../../.github/images/iam.svg" alt="aws-iam" height="196px">
+  <img src="../.github/images/iam.svg" alt="aws-iam" height="196px">
 </p>
 <h1 style="font-size: 56px; margin: 0; padding: 0;" align="center">
   IAM Access Credentials
