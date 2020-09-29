@@ -1,10 +1,10 @@
 {
   "name": "@aws-github-actions/s3-sync",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "Sync locally generated artifacts to an S3 bucket",
   "main": "index.ts",
   "dependencies": {
-    "@aws-github-actions/awscli-core": "^0.5.0",
+    "@aws-github-actions/awscli-core": "^0.5.1",
     "string-argv": "^0.3.1"
   },
   "scripts": {
