@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0](https://github.com/clowdhaus/aws-github-actions/compare/v0.5.1...v0.6.0) (2020-12-21)
+
+
+### Features
+
+* update dependencies to v3 aws-sdk and fix vulnerable github action output when setting env var ([fb034db](https://github.com/clowdhaus/aws-github-actions/commit/fb034db7a51e33f60c3ba26889cbfafb51c5127d))
+
+
+
+
+
 ## 0.5.1 (2020-09-29)
 
 **Note:** Version bump only for package @aws-github-actions/iam-access-credentials
