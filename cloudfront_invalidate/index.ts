@@ -1,5 +1,5 @@
 import * as core from '@actions/core';
-import * as CloudFront from 'aws-sdk/clients/cloudfront';
+import { CloudFrontClient, CreateInvalidationCommand } from '@aws-sdk/client-cloudfront';
 
 const run = async (): Promise<void> => {
   try {
@@ -29,8 +29,12 @@ const run = async (): Promise<void> => {
       },
     };
 
-    const cloudfront = new CloudFront({ apiVersion: '2019-03-26', customUserAgent: 'aws-github-actions-cloudfront' });
-    const invalidation = await cloudfront.createInvalidation(params).promise();
+    const cloudfront = new CloudFrontClient({
+      apiVersion: '2019-03-26',
+      customUserAgent: 'aws-github-actions-cloudfront',
+    });
+
+    const invalidation = await cloudfront.send(new CreateInvalidationCommand(params));
     const invalidationId = invalidation.Invalidation.Id;
     core.setOutput('invalidation-id', invalidationId);
   } catch (error) {

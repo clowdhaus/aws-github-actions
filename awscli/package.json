@@ -9,6 +9,7 @@
   },
   "scripts": {
     "compile": "ncc build -m",
+    "lint": "eslint '*.ts' --ignore-path ../.gitignore --fix",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "clowd.haus",

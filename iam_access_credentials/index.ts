@@ -1,5 +1,6 @@
 import * as core from '@actions/core';
-import * as Sts from 'aws-sdk/clients/sts';
+import { v4 as uuidv4 } from 'uuid';
+import { STSClient, AssumeRoleCommand, GetCallerIdentityCommand } from '@aws-sdk/client-sts';
 
 interface AwsEnvValues {
   accessKeyId: string;
@@ -10,6 +11,10 @@ interface AwsEnvValues {
 }
 
 function exportEnvVariables(config: AwsEnvValues): void {
+  // Disable workflow commands
+  const token = uuidv4();
+  console.log(`::stop-commands::${token}`);
+
   // Export values as environment variables
   // https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-envvars.html
   core.exportVariable('AWS_ACCESS_KEY_ID', config.accessKeyId);
@@ -19,6 +24,9 @@ function exportEnvVariables(config: AwsEnvValues): void {
   }
   core.exportVariable('AWS_DEFAULT_REGION', config.region);
   core.exportVariable('AWS_REGION', config.region);
+
+  // Re-enable workflow commands
+  console.log(`::${token}::`);
 }
 
 const run = async (): Promise<void> => {
@@ -47,7 +55,7 @@ const run = async (): Promise<void> => {
     const parsedDurationSeconds = Math.max(parseInt(durationSeconds), 900);
     const externalId = core.getInput('external-id', { required: false });
 
-    const sts = new Sts({
+    const sts = new STSClient({
       apiVersion: '2011-06-15',
       customUserAgent: 'aws-github-actions-sts',
     });
@@ -61,7 +69,7 @@ const run = async (): Promise<void> => {
 
     // If assuming role, assume then re-export creds to environment
     if (useAssumeRole) {
-      const role = await sts.assumeRole(params).promise();
+      const role = await sts.send(new AssumeRoleCommand(params));
       envValues.accessKeyId = role.Credentials.AccessKeyId;
       envValues.secretAccessKey = role.Credentials.SecretAccessKey;
       envValues.sessionToken = role.Credentials.SessionToken;
@@ -69,7 +77,7 @@ const run = async (): Promise<void> => {
     }
 
     // Get AWS account ID
-    const identity = await sts.getCallerIdentity().promise();
+    const identity = await sts.send(new GetCallerIdentityCommand({}));
     const accountId = identity.Account;
     core.setOutput('aws-account-id', accountId);
     if (!envValues.maskAccountId || envValues.maskAccountId.toLowerCase() == 'true') {
