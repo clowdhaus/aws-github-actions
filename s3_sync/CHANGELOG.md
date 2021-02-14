@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.2](https://github.com/clowdhaus/aws-github-actions/compare/v0.6.1...v0.6.2) (2021-02-14)
+
+
+### Bug Fixes
+
+* rename `master` to `main` and update project dependencies ([89bf0c1](https://github.com/clowdhaus/aws-github-actions/commit/89bf0c1ca521801990fd4f2369780430ff2b25bd))
+
+
+
+
+
 # [0.6.0](https://github.com/clowdhaus/aws-github-actions/compare/v0.5.1...v0.6.0) (2020-12-21)
 
 
