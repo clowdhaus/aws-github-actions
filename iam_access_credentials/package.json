@@ -1,6 +1,6 @@
 {
   "name": "@aws-github-actions/iam-access-credentials",
-  "version": "0.6.2",
+  "version": "0.6.3",
   "description": "Configure AWS IAM access credentials for use with the AWS CLI and AWS SDKs",
   "main": "index.ts",
   "dependencies": {
