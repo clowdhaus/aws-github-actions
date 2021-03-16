@@ -5,6 +5,7 @@ on:
     branches:
       - main
     paths:
+      - '.github/workflows/**'
       - 'awscli/**'
       - 'cloudfront_invalidate/**'
       - 'iam_access_credentials/**'

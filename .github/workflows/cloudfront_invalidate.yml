@@ -5,6 +5,7 @@ on:
     branches:
       - main
     paths:
+      - '.github/workflows/**'
       - 'cloudfront_invalidate/**'
       - 'package.json'
 

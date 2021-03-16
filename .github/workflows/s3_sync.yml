@@ -5,6 +5,7 @@ on:
     branches:
       - main
     paths:
+      - '.github/workflows/**'
       - 's3_sync/**'
       - 'packages/awscli-core/**'
       - 'package.json'
