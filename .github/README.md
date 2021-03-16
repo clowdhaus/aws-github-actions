@@ -8,17 +8,17 @@
   <img src="https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg" alt="Maintained with lerna">
   <img src="https://badgen.net/badge/TypeScript/strict%20%F0%9F%92%AA/blue" alt="Strict TypeScript">
   <img src="https://img.shields.io/badge/commitizen-friendly-brightgreen.svg" alt="Commitizen friendly">
-  <img src="https://snyk.io/test/github/clowdhaus/aws-github-actions/master/badge.svg" alt="Known Vulnerabilities">
+  <img src="https://snyk.io/test/github/clowdhaus/aws-github-actions/main/badge.svg" alt="Known Vulnerabilities">
 </p>
 
 Collection of GitHub actions for interacting with AWS services.
 
 | Action                                                                                    | Local Action Tests                                                                                                      |
 | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| [`clowdhaus/aws-github-actions/awscli@master`](../awscli)                                 | ![AWS Command Line Interface](https://github.com/clowdhaus/aws-github-actions/workflows/awscli/badge.svg)               |
-| [`clowdhaus/aws-github-actions/cloudfront_invalidate@master`](../cloudfront_invalidate)   | ![CloudFront Invalidate](https://github.com/clowdhaus/aws-github-actions/workflows/CloudFront%20Invalidation/badge.svg) |
-| [`clowdhaus/aws-github-actions/iam_access_credentials@master`](../iam_access_credentials) | ![IAM Access Credentials](https://github.com/clowdhaus/aws-github-actions/workflows/IAM%20Credentials/badge.svg)        |
-| [`clowdhaus/aws-github-actions/s3_sync@master`](../s3_sync)                               | ![S3 Sync](https://github.com/clowdhaus/aws-github-actions/workflows/S3%20Sync/badge.svg)                               |
+| [`clowdhaus/aws-github-actions/awscli@main`](../awscli)                                 | ![AWS Command Line Interface](https://github.com/clowdhaus/aws-github-actions/workflows/awscli/badge.svg)               |
+| [`clowdhaus/aws-github-actions/cloudfront_invalidate@main`](../cloudfront_invalidate)   | ![CloudFront Invalidate](https://github.com/clowdhaus/aws-github-actions/workflows/CloudFront%20Invalidation/badge.svg) |
+| [`clowdhaus/aws-github-actions/iam_access_credentials@main`](../iam_access_credentials) | ![IAM Access Credentials](https://github.com/clowdhaus/aws-github-actions/workflows/IAM%20Credentials/badge.svg)        |
+| [`clowdhaus/aws-github-actions/s3_sync@main`](../s3_sync)                               | ![S3 Sync](https://github.com/clowdhaus/aws-github-actions/workflows/S3%20Sync/badge.svg)                               |
 
 ## Usage
 

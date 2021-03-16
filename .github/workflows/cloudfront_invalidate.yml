@@ -3,7 +3,7 @@ name: 'CloudFront Invalidation'
 on:
   push:
     branches:
-      - master
+      - main
     paths:
       - 'cloudfront_invalidate/**'
       - 'package.json'

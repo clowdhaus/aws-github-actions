@@ -3,7 +3,7 @@ name: awscli
 on:
   push:
     branches:
-      - master
+      - main
     paths:
       - 'awscli/**'
       - 'packages/awscli-core/**'

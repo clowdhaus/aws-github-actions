@@ -3,7 +3,7 @@ name: 'S3 Sync'
 on:
   push:
     branches:
-      - master
+      - main
     paths:
       - 's3_sync/**'
       - 'packages/awscli-core/**'
