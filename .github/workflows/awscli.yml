@@ -32,21 +32,3 @@ jobs:
           cli-subcommand: describe-dhcp-options
           cli-parameters: --query DhcpOptions[0].DhcpConfigurations[*].Values[0].Value
           aws-region: us-east-1
-      - name: Get network interface subnet ID
-        id: net-int-subnet-id
-        uses: ./awscli
-        with:
-          cli-command: ec2
-          cli-subcommand: describe-network-interfaces
-          cli-options: --output text
-          cli-parameters: --query NetworkInterfaces[0].SubnetId
-          aws-region: us-east-1
-      - name: Describe interface subnet ID
-        uses: ./awscli
-        env:
-          ACTIONS_RUNNER_DEBUG: true
-        with:
-          cli-command: ec2
-          cli-subcommand: describe-subnets
-          cli-parameters: --subnet-id ${{ steps.net-int-subnet-id.outputs.cli-output }} --query Subnets[*].Tags
-          aws-region: us-east-1
