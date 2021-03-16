@@ -4,7 +4,7 @@
   "description": "Configure AWS IAM access credentials for use with the AWS CLI and AWS SDKs",
   "main": "index.ts",
   "dependencies": {
-    "@aws-sdk/client-sts": "^3.3.0"
+    "@aws-sdk/client-sts": "^3.8.1"
   },
   "scripts": {
     "compile": "ncc build -m",
