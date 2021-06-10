@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.5](https://github.com/clowdhaus/aws-github-actions/compare/v0.6.4...v0.6.5) (2021-06-10)
+
+
+### Bug Fixes
+
+* **deps:** update dependencies to latest and re-complile to patch reported vulnerabilities ([e82300c](https://github.com/clowdhaus/aws-github-actions/commit/e82300c65249d40a4339831427b3854738c59902))
+
+
+
+
+
 # [0.6.0](https://github.com/clowdhaus/aws-github-actions/compare/v0.5.1...v0.6.0) (2020-12-21)
 
 
