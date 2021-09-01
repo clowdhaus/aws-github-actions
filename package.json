@@ -33,24 +33,24 @@
     "release": "lerna version --conventional-commits --create-release github --yes"
   },
   "dependencies": {
-    "@actions/core": "^1.4.0",
+    "@actions/core": "^1.5.0",
     "trim-newlines": ">=4.0.2"
   },
   "devDependencies": {
-    "@types/node": "^16.4.12",
-    "@typescript-eslint/eslint-plugin": "^4.29.0",
-    "@typescript-eslint/parser": "^4.29.0",
-    "@vercel/ncc": "^0.29.0",
+    "@types/node": "^16.7.10",
+    "@typescript-eslint/eslint-plugin": "^4.30.0",
+    "@typescript-eslint/parser": "^4.30.0",
+    "@vercel/ncc": "^0.30.0",
     "commitizen": "^4.2.4",
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-prettier": "^4.0.0",
     "lerna": "^4.0.0",
-    "lint-staged": "^11.1.1",
+    "lint-staged": "^11.1.2",
     "prettier": "^2.3.2",
     "prettier-plugin-package": "^1.3.0",
-    "typescript": "^4.3.5"
+    "typescript": "^4.4.2"
   },
   "resolutions": {
     "trim-newlines": ">=4.0.1"
