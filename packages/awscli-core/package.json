@@ -1,6 +1,6 @@
 {
   "name": "@aws-github-actions/awscli-core",
-  "version": "0.6.5",
+  "version": "0.6.8",
   "description": "Wrapper module for awscli",
   "license": "Apache-2.0",
   "author": "clowd.haus",
