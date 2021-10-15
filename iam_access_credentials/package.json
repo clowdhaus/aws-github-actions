@@ -2,18 +2,17 @@
   "name": "@aws-github-actions/iam-access-credentials",
   "version": "0.6.7",
   "description": "Configure AWS IAM access credentials for use with the AWS CLI and AWS SDKs",
+  "license": "Apache-2.0",
+  "author": "clowd.haus",
   "main": "index.ts",
-  "dependencies": {
-    "@aws-sdk/client-sts": "^3.18.0"
-  },
   "scripts": {
     "compile": "ncc build -m",
-    "lint": "eslint '*.ts' --ignore-path ../.gitignore --fix",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "clowd.haus",
-  "license": "Apache-2.0",
+  "dependencies": {
+    "@aws-sdk/client-sts": "^3.36.1"
+  },
   "devDependencies": {
-    "@types/uuid": "^8.3.0"
+    "@types/uuid": "^8.3.1"
   }
 }

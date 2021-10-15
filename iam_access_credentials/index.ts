@@ -1,6 +1,6 @@
 import * as core from '@actions/core';
-import { v4 as uuidv4 } from 'uuid';
-import { STSClient, AssumeRoleCommand, GetCallerIdentityCommand } from '@aws-sdk/client-sts';
+import {STSClient, AssumeRoleCommand, GetCallerIdentityCommand} from '@aws-sdk/client-sts';
+import {v4 as uuidv4} from 'uuid';
 
 interface AwsEnvValues {
   accessKeyId: string;
@@ -32,11 +32,11 @@ function exportEnvVariables(config: AwsEnvValues): void {
 const run = async (): Promise<void> => {
   try {
     // Inputs:
-    const region = core.getInput('aws-region', { required: true });
-    const accessKeyId = core.getInput('aws-access-key-id', { required: true });
-    const secretAccessKey = core.getInput('aws-secret-access-key', { required: true });
-    const sessionToken = core.getInput('aws-session-token', { required: false });
-    const maskAccountId = core.getInput('mask-aws-account-id', { required: false });
+    const region = core.getInput('aws-region', {required: true});
+    const accessKeyId = core.getInput('aws-access-key-id', {required: true});
+    const secretAccessKey = core.getInput('aws-secret-access-key', {required: true});
+    const sessionToken = core.getInput('aws-session-token', {required: false});
+    const maskAccountId = core.getInput('mask-aws-account-id', {required: false});
     const envValues: AwsEnvValues = {
       region,
       accessKeyId,
@@ -47,13 +47,13 @@ const run = async (): Promise<void> => {
     exportEnvVariables(envValues);
 
     // Assume role inputs:
-    const assumeRole = core.getInput('assume-role', { required: false });
+    const assumeRole = core.getInput('assume-role', {required: false});
     const useAssumeRole = assumeRole && assumeRole.toLowerCase() == 'true';
-    const roleArn = core.getInput('role-arn', { required: useAssumeRole });
-    const roleSessionName = core.getInput('role-session-name', { required: useAssumeRole });
-    const durationSeconds = core.getInput('duration-seconds', { required: false });
+    const roleArn = core.getInput('role-arn', {required: useAssumeRole});
+    const roleSessionName = core.getInput('role-session-name', {required: useAssumeRole});
+    const durationSeconds = core.getInput('duration-seconds', {required: false});
     const parsedDurationSeconds = Math.max(parseInt(durationSeconds), 900);
-    const externalId = core.getInput('external-id', { required: false });
+    const externalId = core.getInput('external-id', {required: false});
 
     const sts = new STSClient({
       apiVersion: '2011-06-15',

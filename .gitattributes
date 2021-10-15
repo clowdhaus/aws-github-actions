@@ -1,0 +1,6 @@
+.eslintrc.js linguist-vendored
+.prettierrc.js linguist-vendored
+commitlint.config.js linguist-vendored
+
+dist/** linguist-generated
+lib/** linguist-generated

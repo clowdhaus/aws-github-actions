@@ -36,11 +36,11 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-var process = require("process");
-var io = require("@actions/io");
 var core = require("@actions/core");
 var exec = require("@actions/exec");
+var io = require("@actions/io");
 var tc = require("@actions/tool-cache");
+var process = require("process");
 var AwsCli = /** @class */ (function () {
     function AwsCli(exePath) {
         this.path = exePath;

@@ -1,5 +1,5 @@
 import * as core from '@actions/core';
-import { CloudFrontClient, CreateInvalidationCommand } from '@aws-sdk/client-cloudfront';
+import {CloudFrontClient, CreateInvalidationCommand} from '@aws-sdk/client-cloudfront';
 
 const run = async (): Promise<void> => {
   try {
@@ -14,7 +14,7 @@ const run = async (): Promise<void> => {
     });
     // A list of the paths that you want to invalidate
     const paths = core
-      .getInput('paths', { required: false })
+      .getInput('paths', {required: false})
       .trim()
       .split(/\r?[\n,]/);
 
