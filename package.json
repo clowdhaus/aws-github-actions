@@ -32,7 +32,7 @@
     "build": "lerna run build && lerna run compile",
     "format": "prettier --write '**/*.ts' .eslintrc.js",
     "lint": "eslint  --ext .ts --quiet --fix",
-    "release": "lerna version --conventional-commits --create-release github --yes"
+    "release": "lerna version --conventional-commits --create-release github"
   },
   "lint-staged": {
     "*.(js|ts)": [
