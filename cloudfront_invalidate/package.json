@@ -10,6 +10,6 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@aws-sdk/client-cloudfront": "^3.36.1"
+    "@aws-sdk/client-cloudfront": "^3.56.0"
   }
 }

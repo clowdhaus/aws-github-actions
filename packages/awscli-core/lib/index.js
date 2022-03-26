@@ -56,7 +56,7 @@ var AwsCli = /** @class */ (function () {
                     case 1: return [2 /*return*/, _a.sent()];
                     case 2:
                         error_1 = _a.sent();
-                        core.debug("Unable to find \"awscli\" executable, installing it now. Reason: " + error_1);
+                        core.debug("Unable to find \"awscli\" executable, installing it now. Reason: ".concat(error_1));
                         return [4 /*yield*/, AwsCli.install()];
                     case 3: return [2 /*return*/, _a.sent()];
                     case 4: return [2 /*return*/];
@@ -114,7 +114,7 @@ var AwsCli = /** @class */ (function () {
                     case 6:
                         _b.sent();
                         return [3 /*break*/, 8];
-                    case 7: throw new Error("Unknown platform " + process.platform + ", can't install awscli");
+                    case 7: throw new Error("Unknown platform ".concat(process.platform, ", can't install awscli"));
                     case 8: 
                     // Assuming it is in the $PATH already
                     return [2 /*return*/, new AwsCli('aws')];
@@ -148,7 +148,7 @@ var AwsCli = /** @class */ (function () {
                             return [2 /*return*/, stdout];
                         }
                         else {
-                            throw new Error("Unable to find the " + program);
+                            throw new Error("Unable to find the ".concat(program));
                         }
                         return [2 /*return*/];
                 }
