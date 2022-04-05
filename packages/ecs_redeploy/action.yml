@@ -1,0 +1,16 @@
+name: 'AWS ECS Service redeploy GitHub action'
+author: 'Zsolt Fejer'
+description: 'Redeploys ECS service'
+branding:
+  icon: 'refresh-ccw'
+  color: 'green'
+inputs:
+  service:
+    description: 'Service name'
+    required: true
+  cluster:
+    description: 'Cluster name'
+    required: true
+runs:
+  using: 'node12'
+  main: 'dist/index.js'

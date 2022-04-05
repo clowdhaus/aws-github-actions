@@ -1,0 +1,15 @@
+{
+  "name": "@aws-github-actions/ecs-redeploy",
+  "version": "1.0.0",
+  "description": "Redeploys an ECS service",
+  "main": "index.ts",
+  "dependencies": {
+    "awscli-core": "file:../awscli-core"
+  },
+  "scripts": {
+    "compile": "node ../../node_modules/@zeit/ncc/dist/ncc/cli.js build -m",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "clowd.haus",
+  "license": "Apache-2.0"
+}
