@@ -5,10 +5,10 @@ branding:
   icon: 'refresh-ccw'
   color: 'green'
 inputs:
-  service:
+  service-name:
     description: 'Service name'
     required: true
-  cluster:
+  cluster-name:
     description: 'Cluster name'
     required: true
 runs:
