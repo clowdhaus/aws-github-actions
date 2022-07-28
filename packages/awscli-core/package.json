@@ -13,6 +13,6 @@
   "dependencies": {
     "@actions/exec": "^1.1.1",
     "@actions/io": "^1.1.2",
-    "@actions/tool-cache": "^1.7.2"
+    "@actions/tool-cache": "^2.0.1"
   }
 }
