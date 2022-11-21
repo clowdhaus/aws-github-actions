@@ -21,6 +21,7 @@ inputs:
       Reference - https://docs.aws.amazon.com/cli/latest/reference/s3/sync.html#synopsis
     required: false
     default: ''
+
 runs:
-  using: 'node12'
-  main: 'dist/index.js'
+  using: node16
+  main: dist/index.js

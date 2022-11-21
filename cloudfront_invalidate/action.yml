@@ -19,9 +19,11 @@ inputs:
       use either mutline string or comma delimited
     required: false
     default: '/*'
+
 outputs:
   invalidation-id:
     description: 'The identifier for the invalidation request'
+
 runs:
-  using: 'node12'
-  main: 'dist/index.js'
+  using: node16
+  main: dist/index.js

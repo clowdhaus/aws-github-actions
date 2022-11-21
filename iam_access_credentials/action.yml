@@ -45,9 +45,11 @@ inputs:
       A unique identifier that might be required when you assume
       a role in another account
     required: false
+
 outputs:
   aws-account-id:
     description: 'The AWS account ID for the provided credentials'
+
 runs:
-  using: 'node12'
-  main: 'dist/index.js'
+  using: node16
+  main: dist/index.js
