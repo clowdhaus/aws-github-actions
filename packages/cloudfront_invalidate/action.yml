@@ -23,5 +23,5 @@ outputs:
   invalidation-id:
     description: 'The identifier for the invalidation request'
 runs:
-  using: 'node12'
+  using: 'node16'
   main: 'dist/index.js'
