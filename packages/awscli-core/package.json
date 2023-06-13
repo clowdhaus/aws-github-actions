@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@actions/exec": "^1.1.1",
-    "@actions/io": "^1.1.2",
+    "@actions/io": "^1.1.3",
     "@actions/tool-cache": "^2.0.1"
   },
   "typings": "lib/index.d.ts"

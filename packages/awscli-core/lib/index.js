@@ -35,7 +35,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 var core = require("@actions/core");
 var exec = require("@actions/exec");
 var io = require("@actions/io");
@@ -177,8 +177,8 @@ var AwsCli = /** @class */ (function () {
                             listeners: {
                                 stdout: function (buffer) {
                                     stdout += buffer.toString();
-                                }
-                            }
+                                },
+                            },
                         });
                         return [4 /*yield*/, this.call(args, resOptions)];
                     case 1:
@@ -190,4 +190,4 @@ var AwsCli = /** @class */ (function () {
     };
     return AwsCli;
 }());
-exports["default"] = AwsCli;
+exports.default = AwsCli;
