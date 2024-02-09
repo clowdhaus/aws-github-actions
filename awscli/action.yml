@@ -1,0 +1,51 @@
+name: 'AWS command line interface GitHub action'
+author: 'Clowd Haus, LLC'
+description: 'Invoke awscli to perform various actions'
+branding:
+  icon: 'terminal'
+  color: 'gray-dark'
+inputs:
+  cli-command:
+    description: >
+      Command passed to awscli, which is infact the service that is the target of
+      your invocation <i.e. - ec2, s3, ebs, etc.>
+
+      Reference - aws [options] <command> <subcommand> [parameters]
+      Reference - https://docs.aws.amazon.com/cli/latest/reference/index.html#cli-aws
+    required: true
+  cli-subcommand:
+    description: >
+      Sub-command passed to awscli, which specifies the command on the target service
+      provided in the command <i.e. - for command of ec2, a sub-command could be describe-instances>
+
+      Reference - aws [options] <command> <subcommand> [parameters]
+      Reference - https://docs.aws.amazon.com/cli/latest/reference/index.html#cli-aws
+    required: true
+  cli-options:
+    description: >
+      CLI Options passed to command invocation
+
+      Reference - aws [options] <command> <subcommand> [parameters]
+      Reference - https://docs.aws.amazon.com/cli/latest/reference/index.html#cli-aws
+    required: false
+  cli-parameters:
+    description: >
+      Options passed with command and sub-command to further define invocation
+      See `options` under `ec2` (command) `describe-instances` (sub-command)
+      for an example of parameters (subcommand options) that can be passed
+      https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-network-interfaces.html
+
+      Reference - aws [options] <command> <subcommand> [parameters]
+      Reference - https://docs.aws.amazon.com/cli/latest/reference/index.html#cli-aws
+    required: false
+  aws-region:
+    description: >
+      Intended AWS Region the command invocation is executed against
+    required: true
+outputs:
+  cli-output:
+    description: 'Output returned from awscli command'
+
+runs:
+  using: node16
+  main: dist/index.js

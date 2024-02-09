@@ -1,5 +1,0 @@
-# Third party
-**/node_modules
-
-packages/**/dist
-packages/**/lib

@@ -3,17 +3,10 @@ name: awscli
 on:
   push:
     branches:
-      - master
+      - main
     paths:
-      - 'packages/awscli/**'
-      - 'packages/awscli-core/**'
-      - 'package.json'
-
-  pull_request:
-    branches:
-      - master
-    paths:
-      - 'packages/awscli/**'
+      - '.github/workflows/**'
+      - 'awscli/**'
       - 'packages/awscli-core/**'
       - 'package.json'
 
@@ -27,34 +20,18 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
       - name: Configure AWS Credentials
-        uses: ./packages/iam_access_credentials
+        uses: ./iam_access_credentials
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ secrets.AWS_DEFAULT_REGION }}
+          aws-region: us-east-1
+
       - name: List us-east-1 DHCP option set values w/ default json output
-        uses: ./packages/awscli
+        uses: ./awscli
         with:
           cli-command: ec2
           cli-subcommand: describe-dhcp-options
           cli-parameters: --query DhcpOptions[0].DhcpConfigurations[*].Values[0].Value
-          aws-region: ${{ secrets.AWS_DEFAULT_REGION }}
-      - name: Get network interface subnet ID
-        id: net-int-subnet-id
-        uses: ./packages/awscli
-        with:
-          cli-command: ec2
-          cli-subcommand: describe-network-interfaces
-          cli-options: --output text
-          cli-parameters: --query NetworkInterfaces[0].SubnetId
-          aws-region: ${{ secrets.AWS_DEFAULT_REGION }}
-      - name: Describe interface subnet ID
-        uses: ./packages/awscli
-        env:
-          ACTIONS_RUNNER_DEBUG: true
-        with:
-          cli-command: ec2
-          cli-subcommand: describe-subnets
-          cli-parameters: --subnet-id ${{ steps.net-int-subnet-id.outputs.cli-output }} --query Subnets[*].Tags
-          aws-region: ${{ secrets.AWS_DEFAULT_REGION }}
+          aws-region: us-east-1

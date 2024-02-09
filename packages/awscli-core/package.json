@@ -1,18 +1,18 @@
 {
   "name": "@aws-github-actions/awscli-core",
-  "version": "0.4.5",
+  "version": "0.7.1",
   "description": "Wrapper module for awscli",
+  "license": "Apache-2.0",
+  "author": "clowd.haus",
   "main": "lib/index.js",
-  "typings": "lib/index.d.ts",
-  "dependencies": {
-    "@actions/exec": "^1.0.4",
-    "@actions/io": "^1.0.2",
-    "@actions/tool-cache": "^1.5.5"
-  },
   "scripts": {
     "build": "rm -f lib/* && tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "clowd.haus",
-  "license": "Apache-2.0"
+  "dependencies": {
+    "@actions/exec": "^1.1.1",
+    "@actions/io": "^1.1.3",
+    "@actions/tool-cache": "^2.0.1"
+  },
+  "typings": "lib/index.d.ts"
 }

@@ -1,0 +1,27 @@
+name: 'AWS S3 sync GitHub action'
+author: 'Clowd Haus, LLC'
+description: 'Sync local artifacts to an S3 bucket'
+branding:
+  icon: 'upload-cloud'
+  color: 'red'
+inputs:
+  local-path:
+    description: 'Path to local directory to synchronize with S3'
+    required: true
+  bucket-name:
+    description: 'S3 bucket name (not ARN nor URI `s3://xxx`, just the bucket name)'
+    required: true
+  path-prefix:
+    description: 'S3 prefix path where object(s) will be syncrhonized to'
+    required: false
+    default: ''
+  args:
+    description: >
+      Optional `awscli s3 sync` cli args
+      Reference - https://docs.aws.amazon.com/cli/latest/reference/s3/sync.html#synopsis
+    required: false
+    default: ''
+
+runs:
+  using: node16
+  main: dist/index.js

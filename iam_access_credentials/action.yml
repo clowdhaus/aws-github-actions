@@ -1,0 +1,55 @@
+name: 'AWS IAM access credential GitHub action'
+author: 'Clowd Haus, LLC'
+description: 'Configure AWS IAM access credentials for use with the AWS CLI and AWS SDKs'
+branding:
+  icon: 'user-check'
+  color: 'orange'
+inputs:
+  aws-region:
+    description: >
+      AWS Region to send the request to. If defined, this environment variable
+      overrides the value for the profile setting region
+    required: true
+  aws-access-key-id:
+    description: 'AWS access key associated with an IAM user or role'
+    required: true
+  aws-secret-access-key:
+    description: 'Specifies the secret key associated with the access key'
+    required: true
+  aws-session-token:
+    description: >
+      Specifies the session token value that is required if you are using temporary
+      security credentials that you retrieved directly from AWS STS operations
+    required: false
+  mask-aws-account-id:
+    description: 'Determine if AWS account ID should be hidden from stdout as a secret value'
+    required: false
+    default: 'true'
+  assume-role:
+    description: 'Determine if role should be assumed to generate credentials'
+    required: false
+    default: 'false'
+  role-arn:
+    description: 'The Amazon Resource Name (ARN) of the role to assume'
+    required: false
+  role-session-name:
+    description: 'An identifier for the assumed role session'
+    required: false
+    default: 'github-action-iam-access'
+  duration-seconds:
+    description: 'The duration, in seconds, of the role session'
+    required: false
+    default: '900'
+  external-id:
+    description: >
+      A unique identifier that might be required when you assume
+      a role in another account
+    required: false
+
+outputs:
+  aws-account-id:
+    description: 'The AWS account ID for the provided credentials'
+
+runs:
+  using: node16
+  main: dist/index.js

@@ -3,17 +3,10 @@ name: 'S3 Sync'
 on:
   push:
     branches:
-      - master
+      - main
     paths:
-      - 'packages/s3_sync/**'
-      - 'packages/awscli-core/**'
-      - 'package.json'
-
-  pull_request:
-    branches:
-      - master
-    paths:
-      - 'packages/s3_sync/**'
+      - '.github/workflows/**'
+      - 's3_sync/**'
       - 'packages/awscli-core/**'
       - 'package.json'
 
@@ -26,17 +19,19 @@ jobs:
         os: [macos-latest, windows-latest, ubuntu-latest]
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
+
       - name: Configure AWS Credentials
-        uses: ./packages/iam_access_credentials
+        uses: ./iam_access_credentials
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ secrets.AWS_DEFAULT_REGION }}
+          aws-region: us-east-1
+
       - name: Sync to S3
-        uses: ./packages/s3_sync
+        uses: ./s3_sync
         with:
-          local-path: packages/s3_sync/dist
-          bucket-name: github-actions-028920223318-us-east-1
+          local-path: s3_sync/dist
+          bucket-name: ${{ secrets.S3_BUCKET_NAME }}
           path-prefix: my/new/prefix
           args: --delete

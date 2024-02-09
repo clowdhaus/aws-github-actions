@@ -1,0 +1,15 @@
+{
+  "name": "@aws-github-actions/cloudfront-invalidate",
+  "version": "0.7.1",
+  "description": "Initiate CloudFront cache invalidation",
+  "license": "Apache-2.0",
+  "author": "clowd.haus",
+  "main": "index.ts",
+  "scripts": {
+    "compile": "ncc build -m",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@aws-sdk/client-cloudfront": "^3.350.0"
+  }
+}

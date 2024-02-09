@@ -1,0 +1,29 @@
+name: 'AWS CloudFront cache invalidation GitHub action'
+description: 'Initiate CloudFront cache invalidation'
+branding:
+  icon: 'refresh-cw'
+  color: 'red'
+inputs:
+  distribution-id:
+    description: 'CloudFront distribution ID'
+    required: true
+  caller-reference:
+    description: >
+      Unique value used to identify invalidation request and prevent
+      CloudFront from resubmitting identical request
+    required: false
+    default: ${{ github.sha }}
+  paths:
+    description: >
+      A list of the paths to invalidate. List cannot be a native YAML array;
+      use either mutline string or comma delimited
+    required: false
+    default: '/*'
+
+outputs:
+  invalidation-id:
+    description: 'The identifier for the invalidation request'
+
+runs:
+  using: node16
+  main: dist/index.js

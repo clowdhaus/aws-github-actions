@@ -1,0 +1,16 @@
+{
+  "name": "@aws-github-actions/awscli",
+  "version": "0.7.1",
+  "description": "Wrapper for awscli",
+  "license": "Apache-2.0",
+  "author": "clowd.haus",
+  "main": "index.ts",
+  "scripts": {
+    "compile": "ncc build -m",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@aws-github-actions/awscli-core": "^0.7.1",
+    "string-argv": "^0.3.2"
+  }
+}

@@ -14,7 +14,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     function verb(n) { return function (v) { return step([n, v]); }; }
     function step(op) {
         if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
             if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
             if (y = 0, t) op = [op[0] & 2, t.value];
             switch (op[0]) {
@@ -35,12 +35,12 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-exports.__esModule = true;
-var process = require("process");
-var io = require("@actions/io");
+Object.defineProperty(exports, "__esModule", { value: true });
 var core = require("@actions/core");
 var exec = require("@actions/exec");
+var io = require("@actions/io");
 var tc = require("@actions/tool-cache");
+var process = require("process");
 var AwsCli = /** @class */ (function () {
     function AwsCli(exePath) {
         this.path = exePath;
@@ -56,7 +56,7 @@ var AwsCli = /** @class */ (function () {
                     case 1: return [2 /*return*/, _a.sent()];
                     case 2:
                         error_1 = _a.sent();
-                        core.debug("Unable to find \"awscli\" executable, installing it now. Reason: " + error_1);
+                        core.debug("Unable to find \"awscli\" executable, installing it now. Reason: ".concat(error_1));
                         return [4 /*yield*/, AwsCli.install()];
                     case 3: return [2 /*return*/, _a.sent()];
                     case 4: return [2 /*return*/];
@@ -114,7 +114,7 @@ var AwsCli = /** @class */ (function () {
                     case 6:
                         _b.sent();
                         return [3 /*break*/, 8];
-                    case 7: throw new Error("Unknown platform " + process.platform + ", can't install awscli");
+                    case 7: throw new Error("Unknown platform ".concat(process.platform, ", can't install awscli"));
                     case 8: 
                     // Assuming it is in the $PATH already
                     return [2 /*return*/, new AwsCli('aws')];
@@ -148,7 +148,7 @@ var AwsCli = /** @class */ (function () {
                             return [2 /*return*/, stdout];
                         }
                         else {
-                            throw new Error("Unable to find the " + program);
+                            throw new Error("Unable to find the ".concat(program));
                         }
                         return [2 /*return*/];
                 }
@@ -177,8 +177,8 @@ var AwsCli = /** @class */ (function () {
                             listeners: {
                                 stdout: function (buffer) {
                                     stdout += buffer.toString();
-                                }
-                            }
+                                },
+                            },
                         });
                         return [4 /*yield*/, this.call(args, resOptions)];
                     case 1:
@@ -190,4 +190,4 @@ var AwsCli = /** @class */ (function () {
     };
     return AwsCli;
 }());
-exports["default"] = AwsCli;
+exports.default = AwsCli;
