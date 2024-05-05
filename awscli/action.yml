@@ -47,5 +47,5 @@ outputs:
     description: 'Output returned from awscli command'
 
 runs:
-  using: node16
+  using: node20
   main: dist/index.js

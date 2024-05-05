@@ -51,5 +51,5 @@ outputs:
     description: 'The AWS account ID for the provided credentials'
 
 runs:
-  using: node16
+  using: node20
   main: dist/index.js
