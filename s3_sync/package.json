@@ -1,6 +1,6 @@
 {
   "name": "@aws-github-actions/s3-sync",
-  "version": "0.7.1",
+  "version": "0.8.0",
   "description": "Sync locally generated artifacts to an S3 bucket",
   "license": "Apache-2.0",
   "author": "clowd.haus",
@@ -10,7 +10,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@aws-github-actions/awscli-core": "^0.7.1",
+    "@aws-github-actions/awscli-core": "^0.8.0",
     "string-argv": "^0.3.2"
   }
 }

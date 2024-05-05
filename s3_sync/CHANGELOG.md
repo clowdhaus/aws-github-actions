@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.8.0](https://github.com/clowdhaus/aws-github-actions/compare/v0.7.1...v0.8.0) (2024-05-05)
+
+
+### Features
+
+* Update actions runtime from NodeJS 16 to 20 ([c192165](https://github.com/clowdhaus/aws-github-actions/commit/c1921651c03b9b5a92e47c19fbc3aa06897ba8c8))
+
+
+
+
+
 ## [0.7.1](https://github.com/clowdhaus/aws-github-actions/compare/v0.7.0...v0.7.1) (2023-06-13)
 
 ### Bug Fixes

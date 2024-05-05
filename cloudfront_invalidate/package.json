@@ -1,6 +1,6 @@
 {
   "name": "@aws-github-actions/cloudfront-invalidate",
-  "version": "0.7.1",
+  "version": "0.8.0",
   "description": "Initiate CloudFront cache invalidation",
   "license": "Apache-2.0",
   "author": "clowd.haus",
