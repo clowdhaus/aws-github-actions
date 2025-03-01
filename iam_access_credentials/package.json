@@ -13,6 +13,6 @@
     "@aws-sdk/client-sts": "^3.569.0"
   },
   "devDependencies": {
-    "@types/uuid": "^9.0.8"
+    "@types/uuid": "^10.0.0"
   }
 }
