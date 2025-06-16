@@ -48,7 +48,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.2.0",
-    "@types/node": "^22.13.8",
+    "@types/node": "^24.0.3",
     "@vercel/ncc": "^0.38.1",
     "commitizen": "^4.3.0",
     "cz-conventional-changelog": "^3.3.0",
