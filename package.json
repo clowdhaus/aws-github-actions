@@ -33,33 +33,28 @@
     "lint": "eslint . --fix",
     "release": "lerna version --conventional-commits --create-release github"
   },
-  "lint-staged": {
-    "*.(js|ts)": [
-      "eslint --fix"
-    ]
-  },
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
   },
   "dependencies": {
-    "@actions/core": "^1.10.1"
+    "@actions/core": "^1.11.1"
   },
   "devDependencies": {
-    "@eslint/js": "^9.2.0",
-    "@types/node": "^24.0.3",
-    "@vercel/ncc": "^0.38.1",
-    "commitizen": "^4.3.0",
+    "@eslint/js": "^9.39.1",
+    "@types/node": "^24.10.1",
+    "@vercel/ncc": "^0.38.4",
+    "commitizen": "^4.3.1",
     "cz-conventional-changelog": "^3.3.0",
-    "eslint": "^9.2.0",
-    "lerna": "^9.0.0",
-    "lint-staged": "^16.0.0",
-    "typescript": "^5.4.5",
-    "typescript-eslint": "^8.25.0"
+    "eslint": "^9.39.1",
+    "lerna": "^9.0.1",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.47.0"
   },
   "resolutions": {
-    "fast-xml-parser": ">=4.4.1"
+    "tmp": ">=0.2.4",
+    "js-yaml": ">=4.1.1"
   },
   "command": {
     "version": {

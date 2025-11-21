@@ -12,7 +12,7 @@
   "dependencies": {
     "@actions/exec": "^1.1.1",
     "@actions/io": "^2.0.0",
-    "@actions/tool-cache": "^2.0.1"
+    "@actions/tool-cache": "^2.0.2"
   },
   "typings": "lib/index.d.ts"
 }
