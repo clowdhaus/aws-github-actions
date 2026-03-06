@@ -1,0 +1,66 @@
+name: verify-build
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/**'
+      - 'awscli/**'
+      - 'cloudfront_invalidate/**'
+      - 'iam_access_credentials/**'
+      - 'packages/**'
+      - 's3_sync/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - 'tsconfig.json'
+      - 'eslint.config.mjs'
+  push:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/**'
+      - 'awscli/**'
+      - 'cloudfront_invalidate/**'
+      - 'iam_access_credentials/**'
+      - 'packages/**'
+      - 's3_sync/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - 'tsconfig.json'
+      - 'eslint.config.mjs'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify-build:
+    name: Verify dist is up to date
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        with:
+          persist-credentials: false
+
+      - name: Setup Node.js
+        uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6
+        with:
+          node-version: 24
+
+      - name: Install, test, and build
+        run: |
+          npm ci --ignore-scripts
+          npm run all
+
+      - name: Check for uncommitted changes
+        run: |
+          if ! git diff --quiet awscli/dist/ cloudfront_invalidate/dist/ iam_access_credentials/dist/ s3_sync/dist/ packages/awscli-core/lib/; then
+            echo "::error::dist is out of date. Run 'npm run all' and commit the result."
+            git diff --stat
+            exit 1
+          fi

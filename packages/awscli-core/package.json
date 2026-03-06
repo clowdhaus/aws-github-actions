@@ -4,7 +4,6 @@
   "description": "Wrapper module for awscli",
   "license": "Apache-2.0",
   "author": "clowd.haus",
-  "type": "module",
   "main": "lib/index.js",
   "scripts": {
     "build": "rm -f lib/* && tsc",
