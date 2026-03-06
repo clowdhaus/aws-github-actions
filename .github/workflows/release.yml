@@ -48,5 +48,4 @@ jobs:
           tag_name: ${{ steps.git-cliff.outputs.version }}
           body: ${{ steps.git-cliff.outputs.content }}
           make_latest: "true"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}

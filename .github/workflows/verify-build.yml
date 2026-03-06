@@ -59,7 +59,7 @@ jobs:
 
       - name: Check for uncommitted changes
         run: |
-          if ! git diff --quiet awscli/dist/ cloudfront_invalidate/dist/ iam_access_credentials/dist/ s3_sync/dist/; then
+          if ! git diff --quiet awscli/dist/ cloudfront_invalidate/dist/ iam_access_credentials/dist/ s3_sync/dist/ packages/*/dist/; then
             echo "::error::dist is out of date. Run 'npm run all' and commit the result."
             git diff --stat
             exit 1

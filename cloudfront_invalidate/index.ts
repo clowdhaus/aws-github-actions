@@ -11,7 +11,7 @@ const run = async (): Promise<void> => {
     // CloudFront uses the value to prevent from accidentally resubmitting an identical request
     const callerReference = core.getInput('caller-reference', {
       required: false,
-    });
+    }) || new Date().toISOString();
     // A list of the paths that you want to invalidate
     const paths = core
       .getInput('paths', {required: false})

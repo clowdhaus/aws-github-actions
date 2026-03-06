@@ -37,6 +37,13 @@ const run = async (): Promise<void> => {
     const secretAccessKey = core.getInput('aws-secret-access-key', {required: true});
     const sessionToken = core.getInput('aws-session-token', {required: false});
     const maskAccountId = core.getInput('mask-aws-account-id', {required: false});
+    // Mask credentials to prevent leaking in logs
+    core.setSecret(accessKeyId);
+    core.setSecret(secretAccessKey);
+    if (sessionToken) {
+      core.setSecret(sessionToken);
+    }
+
     const envValues: AwsEnvValues = {
       region,
       accessKeyId,
@@ -46,29 +53,27 @@ const run = async (): Promise<void> => {
     };
     exportEnvVariables(envValues);
 
-    // Assume role inputs:
-    const assumeRole = core.getInput('assume-role', {required: false});
-    const useAssumeRole = assumeRole !== '' && assumeRole.toLowerCase() == 'true';
-    const roleArn = core.getInput('role-arn', {required: useAssumeRole});
-    const roleSessionName = core.getInput('role-session-name', {required: useAssumeRole});
-    const durationSeconds = core.getInput('duration-seconds', {required: false});
-    const parsedDurationSeconds = Math.max(parseInt(durationSeconds), 900);
-    const externalId = core.getInput('external-id', {required: false});
-
     const sts = new STSClient({
       apiVersion: '2011-06-15',
       customUserAgent: 'aws-github-actions-sts',
     });
 
-    const params = {
-      RoleArn: roleArn,
-      RoleSessionName: roleSessionName,
-      DurationSecond: parsedDurationSeconds,
-      ExternalId: externalId,
-    };
-
     // If assuming role, assume then re-export creds to environment
+    const assumeRole = core.getInput('assume-role', {required: false});
+    const useAssumeRole = assumeRole !== '' && assumeRole.toLowerCase() == 'true';
     if (useAssumeRole) {
+      const roleArn = core.getInput('role-arn', {required: true});
+      const roleSessionName = core.getInput('role-session-name', {required: true});
+      const durationSeconds = core.getInput('duration-seconds', {required: false});
+      const externalId = core.getInput('external-id', {required: false});
+
+      const params = {
+        RoleArn: roleArn,
+        RoleSessionName: roleSessionName,
+        DurationSeconds: parseInt(durationSeconds) || 900,
+        ...(externalId ? {ExternalId: externalId} : {}),
+      };
+
       const role = await sts.send(new AssumeRoleCommand(params));
       if (!role.Credentials?.AccessKeyId || !role.Credentials?.SecretAccessKey) {
         throw new Error('AssumeRole response missing credentials');
@@ -76,6 +81,11 @@ const run = async (): Promise<void> => {
       envValues.accessKeyId = role.Credentials.AccessKeyId;
       envValues.secretAccessKey = role.Credentials.SecretAccessKey;
       envValues.sessionToken = role.Credentials.SessionToken;
+      core.setSecret(envValues.accessKeyId);
+      core.setSecret(envValues.secretAccessKey);
+      if (envValues.sessionToken) {
+        core.setSecret(envValues.sessionToken);
+      }
       exportEnvVariables(envValues);
     }
 
@@ -83,7 +93,7 @@ const run = async (): Promise<void> => {
     const identity = await sts.send(new GetCallerIdentityCommand({}));
     const accountId = identity.Account;
     core.setOutput('aws-account-id', accountId);
-    if (!envValues.maskAccountId || envValues.maskAccountId.toLowerCase() == 'true') {
+    if (envValues.maskAccountId.toLowerCase() !== 'false') {
       if (accountId) {
         core.setSecret(accountId);
       }

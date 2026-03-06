@@ -21,6 +21,7 @@ vi.mock('@aws-github-actions/awscli-core', () => ({
 describe('s3_sync action', () => {
   beforeEach(() => {
     vi.clearAllMocks();
+    vi.mocked(fs.lstat).mockResolvedValue({isDirectory: () => true} as unknown as import('fs').Stats);
     vi.resetModules();
   });
 
@@ -47,8 +48,27 @@ describe('s3_sync action', () => {
     ]);
   });
 
+  it('should fail when path is not a directory', async () => {
+    vi.mocked(fs.lstat).mockResolvedValue({isDirectory: () => false} as unknown as import('fs').Stats);
+    vi.mocked(core.getInput).mockImplementation((name: string) => {
+      const inputs: Record<string, string> = {
+        'local-path': './file.txt',
+        'bucket-name': 'my-bucket',
+        'path-prefix': '',
+        args: '',
+      };
+      return inputs[name] ?? '';
+    });
+
+    const {default: run} = await import('./index');
+    await run();
+
+    expect(core.setFailed).toHaveBeenCalledWith('sync API synchronizes a directory, not a single file');
+    expect(mockCall).not.toHaveBeenCalled();
+  });
+
   it('should call setFailed on error', async () => {
-    vi.mocked(fs.lstat).mockRejectedValueOnce(new Error('Path not found'));
+    vi.mocked(fs.lstat).mockRejectedValue(new Error('Path not found'));
     vi.mocked(core.getInput).mockImplementation((name: string) => {
       const inputs: Record<string, string> = {
         'local-path': './nonexistent',
