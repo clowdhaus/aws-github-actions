@@ -18,7 +18,7 @@ const run = async (): Promise<void> => {
 
     core.setOutput('cli-output', result);
   } catch (error) {
-    core.setFailed(error.message);
+    core.setFailed(error instanceof Error ? error.message : String(error));
   }
 };
 

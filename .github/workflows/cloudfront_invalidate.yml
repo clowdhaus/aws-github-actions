@@ -1,6 +1,14 @@
-name: 'CloudFront Invalidation'
+name: cloudfront_invalidate
 
 on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/**'
+      - 'cloudfront_invalidate/**'
+      - 'package.json'
+      - 'package-lock.json'
   push:
     branches:
       - main
@@ -8,6 +16,14 @@ on:
       - '.github/workflows/**'
       - 'cloudfront_invalidate/**'
       - 'package.json'
+      - 'package-lock.json'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   cloudfront-invalidate:
@@ -15,7 +31,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        with:
+          persist-credentials: false
 
       - name: Configure AWS Credentials
         uses: ./iam_access_credentials

@@ -23,27 +23,29 @@ export default class AwsCli {
 
   // Will throw an error if `aws` is not installed.
   public static async get(): Promise<AwsCli> {
-    if (process.platform === 'win32') {
-      // Comes on windows runner provided by GitHub so remove
-      await exec.exec('rmdir', ['/Q', '/S', '"C:/Program Files/Amazon"']);
-    }
     const exePath = await io.which('aws', true);
     return new AwsCli(exePath);
   }
 
   private static async install(): Promise<AwsCli> {
     switch (process.platform) {
-      case 'darwin':
       case 'linux': {
-        const AwsCliPath = await tc.downloadTool('https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip');
-        const AwsCliExtractedDir = await tc.extractZip(AwsCliPath);
-        core.addPath(AwsCliExtractedDir);
+        const arch = process.arch === 'arm64' ? 'aarch64' : 'x86_64';
+        const zipPath = await tc.downloadTool(`https://awscli.amazonaws.com/awscli-exe-linux-${arch}.zip`);
+        const extractedDir = await tc.extractZip(zipPath);
+        await exec.exec(`${extractedDir}/aws/install`, ['--bin-dir', '/usr/local/bin', '--install-dir', '/usr/local/aws-cli']);
+        break;
+      }
+
+      case 'darwin': {
+        const pkgPath = await tc.downloadTool('https://awscli.amazonaws.com/AWSCLIV2.pkg');
+        await exec.exec('installer', ['-pkg', pkgPath, '-target', '/']);
         break;
       }
 
       case 'win32': {
-        const AwsCliMsiPath = await tc.downloadTool('https://awscli.amazonaws.com/AWSCLIV2.msi');
-        await exec.exec('msiexec.exe', ['/i', AwsCliMsiPath, '/quiet']);
+        const msiPath = await tc.downloadTool('https://awscli.amazonaws.com/AWSCLIV2.msi');
+        await exec.exec('msiexec.exe', ['/i', msiPath, '/quiet']);
         break;
       }
 
@@ -51,13 +53,13 @@ export default class AwsCli {
         throw new Error(`Unknown platform ${process.platform}, can't install awscli`);
     }
 
-    // Assuming it is in the $PATH already
-    return new AwsCli('aws');
+    const exePath = await io.which('aws', true);
+    return new AwsCli(exePath);
   }
 
   public async version(): Promise<string> {
     const stdout = await this.callStdout(['--version']);
-    return stdout.split(' ')[1];
+    return stdout.split('/')[1].split(' ')[0];
   }
 
   // awscli which `program`
@@ -71,20 +73,25 @@ export default class AwsCli {
     }
   }
 
-  public async call(args: string[], options?: unknown): Promise<number> {
-    return await exec.exec(this.path, args, options);
+  public async call(args: string[], options?: exec.ExecOptions): Promise<number> {
+    // Quote the path to handle spaces (e.g. C:\Program Files\...)
+    const cmd = this.path.includes(' ') ? `"${this.path}"` : this.path;
+    return await exec.exec(cmd, args, options);
   }
 
   // Call the `awscli` and return stdout
-  async callStdout(args: string[], options?: unknown): Promise<string> {
+  async callStdout(args: string[], options?: exec.ExecOptions): Promise<string> {
     let stdout = '';
-    const resOptions = Object.assign({}, options, {
+    const resOptions: exec.ExecOptions = {
+      ...options,
       listeners: {
+        ...options?.listeners,
         stdout: (buffer: Buffer) => {
           stdout += buffer.toString();
+          options?.listeners?.stdout?.(buffer);
         },
       },
-    });
+    };
 
     await this.call(args, resOptions);
 

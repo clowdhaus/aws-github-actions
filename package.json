@@ -1,6 +1,6 @@
 {
   "name": "aws-github-actions",
-  "version": "0.4.6",
+  "version": "0.0.0",
   "private": true,
   "description": "GitHub actions for AWS services",
   "keywords": [
@@ -28,15 +28,11 @@
     "s3_sync"
   ],
   "scripts": {
-    "all": "yarn lint && yarn build",
-    "build": "lerna run build && lerna run compile",
-    "lint": "eslint . --fix",
-    "release": "lerna version --conventional-commits --create-release github"
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
+    "all": "npm run lint && npm run typecheck && npm run test && npm run compile",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "compile": "npm run compile --workspaces --if-present",
+    "lint": "eslint . --quiet --fix"
   },
   "dependencies": {
     "@actions/core": "^3.0.0"
@@ -44,21 +40,10 @@
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "@types/node": "^25.0.2",
-    "@vercel/ncc": "^0.38.4",
-    "commitizen": "^4.3.1",
-    "cz-conventional-changelog": "^3.3.0",
+    "esbuild": "^0.25.1",
     "eslint": "^10.0.0",
-    "lerna": "^9.0.1",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.47.0"
-  },
-  "resolutions": {
-    "tmp": ">=0.2.4",
-    "js-yaml": ">=4.1.1"
-  },
-  "command": {
-    "version": {
-      "allowBranch": "main"
-    }
+    "typescript-eslint": "^8.47.0",
+    "vitest": "^4.0.18"
   }
 }

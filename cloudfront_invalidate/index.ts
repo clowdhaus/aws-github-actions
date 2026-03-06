@@ -11,7 +11,7 @@ const run = async (): Promise<void> => {
     // CloudFront uses the value to prevent from accidentally resubmitting an identical request
     const callerReference = core.getInput('caller-reference', {
       required: false,
-    });
+    }) || new Date().toISOString();
     // A list of the paths that you want to invalidate
     const paths = core
       .getInput('paths', {required: false})
@@ -35,10 +35,10 @@ const run = async (): Promise<void> => {
     });
 
     const invalidation = await cloudfront.send(new CreateInvalidationCommand(params));
-    const invalidationId = invalidation.Invalidation.Id;
+    const invalidationId = invalidation.Invalidation?.Id;
     core.setOutput('invalidation-id', invalidationId);
   } catch (error) {
-    core.setFailed(error.message);
+    core.setFailed(error instanceof Error ? error.message : String(error));
   }
 };
 

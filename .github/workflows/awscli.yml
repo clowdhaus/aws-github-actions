@@ -1,6 +1,15 @@
 name: awscli
 
 on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/**'
+      - 'awscli/**'
+      - 'packages/awscli-core/**'
+      - 'package.json'
+      - 'package-lock.json'
   push:
     branches:
       - main
@@ -9,6 +18,14 @@ on:
       - 'awscli/**'
       - 'packages/awscli-core/**'
       - 'package.json'
+      - 'package-lock.json'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   awscli:
@@ -19,7 +36,9 @@ jobs:
         os: [macos-latest, windows-latest, ubuntu-latest]
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        with:
+          persist-credentials: false
 
       - name: Configure AWS Credentials
         uses: ./iam_access_credentials

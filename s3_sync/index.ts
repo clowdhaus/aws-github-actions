@@ -10,7 +10,7 @@ const run = async (): Promise<void> => {
     const localPath = core.getInput('local-path', {required: true});
     const stat = await fs.lstat(localPath);
     if (!stat.isDirectory()) {
-      core.error(`Error: sync API synchronizes a directory not a single file`);
+      throw new Error('sync API synchronizes a directory, not a single file');
     }
     const bucketName = core.getInput('bucket-name', {required: true});
     const pathPrefix = core.getInput('path-prefix', {required: false});
@@ -20,7 +20,7 @@ const run = async (): Promise<void> => {
     const Aws = await AwsCli.getOrInstall();
     await Aws.call(['s3', 'sync', localPath, s3Uri, ...args]);
   } catch (error) {
-    core.setFailed(error.message);
+    core.setFailed(error instanceof Error ? error.message : String(error));
   }
 };
 
