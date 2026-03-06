@@ -25,5 +25,5 @@ outputs:
     description: 'The identifier for the invalidation request'
 
 runs:
-  using: node22
+  using: node24
   main: dist/index.js
