@@ -20,7 +20,7 @@ const run = async (): Promise<void> => {
     const Aws = await AwsCli.getOrInstall();
     await Aws.call(['s3', 'sync', localPath, s3Uri, ...args]);
   } catch (error) {
-    core.setFailed(error.message);
+    core.setFailed(error instanceof Error ? error.message : String(error));
   }
 };
 

@@ -48,7 +48,7 @@ const run = async (): Promise<void> => {
 
     // Assume role inputs:
     const assumeRole = core.getInput('assume-role', {required: false});
-    const useAssumeRole = assumeRole && assumeRole.toLowerCase() == 'true';
+    const useAssumeRole = assumeRole !== '' && assumeRole.toLowerCase() == 'true';
     const roleArn = core.getInput('role-arn', {required: useAssumeRole});
     const roleSessionName = core.getInput('role-session-name', {required: useAssumeRole});
     const durationSeconds = core.getInput('duration-seconds', {required: false});
@@ -70,9 +70,9 @@ const run = async (): Promise<void> => {
     // If assuming role, assume then re-export creds to environment
     if (useAssumeRole) {
       const role = await sts.send(new AssumeRoleCommand(params));
-      envValues.accessKeyId = role.Credentials.AccessKeyId;
-      envValues.secretAccessKey = role.Credentials.SecretAccessKey;
-      envValues.sessionToken = role.Credentials.SessionToken;
+      envValues.accessKeyId = role.Credentials!.AccessKeyId!;
+      envValues.secretAccessKey = role.Credentials!.SecretAccessKey!;
+      envValues.sessionToken = role.Credentials!.SessionToken;
       exportEnvVariables(envValues);
     }
 
@@ -81,10 +81,10 @@ const run = async (): Promise<void> => {
     const accountId = identity.Account;
     core.setOutput('aws-account-id', accountId);
     if (!envValues.maskAccountId || envValues.maskAccountId.toLowerCase() == 'true') {
-      core.setSecret(accountId);
+      core.setSecret(accountId!);
     }
   } catch (error) {
-    core.setFailed(error.message);
+    core.setFailed(error instanceof Error ? error.message : String(error));
   }
 };
 
