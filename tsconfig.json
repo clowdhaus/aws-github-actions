@@ -2,18 +2,15 @@
   "compilerOptions": {
     "target": "esnext",
     "moduleResolution": "node",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
-    "removeComments": false,
-    // "strictNullChecks": true,
-    "strictFunctionTypes": true,
-    "noImplicitAny": true,
-    "noImplicitThis": true,
-    "alwaysStrict": true,
+    "removeComments": true,
+    "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noImplicitReturns": true,
-    "preserveConstEnums": true
+    "noImplicitReturns": true
   },
-  "include": ["packages/**/*.ts"],
-  "exclude": ["node_modules"]
+  "include": ["packages/**/*.ts", "awscli/**/*.ts", "cloudfront_invalidate/**/*.ts", "iam_access_credentials/**/*.ts", "s3_sync/**/*.ts"],
+  "exclude": ["node_modules", "**/dist/**", "**/lib/**"]
 }
