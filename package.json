@@ -28,7 +28,8 @@
     "s3_sync"
   ],
   "scripts": {
-    "all": "npm run lint && npm run test && npm run compile",
+    "all": "npm run lint && npm run typecheck && npm run test && npm run compile",
+    "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "compile": "npm run compile --workspaces --if-present",
     "lint": "eslint . --quiet --fix"

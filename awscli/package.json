@@ -6,8 +6,7 @@
   "author": "clowd.haus",
   "main": "index.ts",
   "scripts": {
-    "compile": "esbuild index.ts --bundle --platform=node --target=node24 --minify --outfile=dist/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "compile": "esbuild index.ts --bundle --platform=node --target=node24 --minify --outfile=dist/index.js"
   },
   "dependencies": {
     "@aws-github-actions/awscli-core": "^0.8.0",

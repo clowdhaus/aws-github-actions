@@ -42,7 +42,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Create release
-        if: steps.git-cliff.outputs.version != ''
+        if: steps.git-cliff.outputs.version != '' && steps.git-cliff.outputs.content != ''
         uses: softprops/action-gh-release@a06a81a03ee405af7f2048a818ed3f03bbf83c7b # v2
         with:
           tag_name: ${{ steps.git-cliff.outputs.version }}

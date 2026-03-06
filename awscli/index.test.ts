@@ -30,8 +30,8 @@ describe('awscli action', () => {
       return inputs[name] ?? '';
     });
 
-    await import('./index');
-    await new Promise((r) => setTimeout(r, 10));
+    const {default: run} = await import('./index');
+    await run();
 
     expect(mockCallStdout).toHaveBeenCalledWith([
       'ec2',
@@ -49,8 +49,8 @@ describe('awscli action', () => {
       throw new Error('Missing input');
     });
 
-    await import('./index');
-    await new Promise((r) => setTimeout(r, 10));
+    const {default: run} = await import('./index');
+    await run();
 
     expect(core.setFailed).toHaveBeenCalledWith('Missing input');
   });

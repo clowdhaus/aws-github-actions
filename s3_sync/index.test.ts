@@ -35,8 +35,8 @@ describe('s3_sync action', () => {
       return inputs[name] ?? '';
     });
 
-    await import('./index');
-    await new Promise((r) => setTimeout(r, 10));
+    const {default: run} = await import('./index');
+    await run();
 
     expect(mockCall).toHaveBeenCalledWith([
       's3',
@@ -59,8 +59,8 @@ describe('s3_sync action', () => {
       return inputs[name] ?? '';
     });
 
-    await import('./index');
-    await new Promise((r) => setTimeout(r, 10));
+    const {default: run} = await import('./index');
+    await run();
 
     expect(core.setFailed).toHaveBeenCalledWith('Path not found');
   });

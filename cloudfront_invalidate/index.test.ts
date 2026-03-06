@@ -31,8 +31,8 @@ describe('cloudfront_invalidate action', () => {
   });
 
   it('should create invalidation and set output', async () => {
-    await import('./index');
-    await new Promise((r) => setTimeout(r, 10));
+    const {default: run} = await import('./index');
+    await run();
 
     expect(core.setOutput).toHaveBeenCalledWith('invalidation-id', 'test-invalidation-id');
   });
@@ -42,8 +42,8 @@ describe('cloudfront_invalidate action', () => {
       throw new Error('Missing input');
     });
 
-    await import('./index');
-    await new Promise((r) => setTimeout(r, 10));
+    const {default: run} = await import('./index');
+    await run();
 
     expect(core.setFailed).toHaveBeenCalledWith('Missing input');
   });

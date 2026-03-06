@@ -40,8 +40,8 @@ describe('iam_access_credentials action', () => {
   });
 
   it('should export environment variables and mask account id', async () => {
-    await import('./index');
-    await new Promise((r) => setTimeout(r, 10));
+    const {default: run} = await import('./index');
+    await run();
 
     expect(core.exportVariable).toHaveBeenCalledWith('AWS_ACCESS_KEY_ID', 'AKIAIOSFODNN7EXAMPLE');
     expect(core.exportVariable).toHaveBeenCalledWith('AWS_REGION', 'us-east-1');
@@ -54,8 +54,8 @@ describe('iam_access_credentials action', () => {
       throw new Error('Missing input');
     });
 
-    await import('./index');
-    await new Promise((r) => setTimeout(r, 10));
+    const {default: run} = await import('./index');
+    await run();
 
     expect(core.setFailed).toHaveBeenCalledWith('Missing input');
   });

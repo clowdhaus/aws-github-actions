@@ -70,9 +70,12 @@ const run = async (): Promise<void> => {
     // If assuming role, assume then re-export creds to environment
     if (useAssumeRole) {
       const role = await sts.send(new AssumeRoleCommand(params));
-      envValues.accessKeyId = role.Credentials!.AccessKeyId!;
-      envValues.secretAccessKey = role.Credentials!.SecretAccessKey!;
-      envValues.sessionToken = role.Credentials!.SessionToken;
+      if (!role.Credentials?.AccessKeyId || !role.Credentials?.SecretAccessKey) {
+        throw new Error('AssumeRole response missing credentials');
+      }
+      envValues.accessKeyId = role.Credentials.AccessKeyId;
+      envValues.secretAccessKey = role.Credentials.SecretAccessKey;
+      envValues.sessionToken = role.Credentials.SessionToken;
       exportEnvVariables(envValues);
     }
 
@@ -81,7 +84,9 @@ const run = async (): Promise<void> => {
     const accountId = identity.Account;
     core.setOutput('aws-account-id', accountId);
     if (!envValues.maskAccountId || envValues.maskAccountId.toLowerCase() == 'true') {
-      core.setSecret(accountId!);
+      if (accountId) {
+        core.setSecret(accountId);
+      }
     }
   } catch (error) {
     core.setFailed(error instanceof Error ? error.message : String(error));
