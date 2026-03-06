@@ -1,3 +1,4 @@
+import * as exec from '@actions/exec';
 export default class AwsCli {
     private readonly path;
     private constructor();
@@ -6,6 +7,6 @@ export default class AwsCli {
     private static install;
     version(): Promise<string>;
     which(program: string): Promise<string>;
-    call(args: string[], options?: unknown): Promise<number>;
-    callStdout(args: string[], options?: unknown): Promise<string>;
+    call(args: string[], options?: exec.ExecOptions): Promise<number>;
+    callStdout(args: string[], options?: exec.ExecOptions): Promise<string>;
 }
