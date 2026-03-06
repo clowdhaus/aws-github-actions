@@ -74,7 +74,9 @@ export default class AwsCli {
   }
 
   public async call(args: string[], options?: exec.ExecOptions): Promise<number> {
-    return await exec.exec(this.path, args, options);
+    // Quote the path to handle spaces (e.g. C:\Program Files\...)
+    const cmd = this.path.includes(' ') ? `"${this.path}"` : this.path;
+    return await exec.exec(cmd, args, options);
   }
 
   // Call the `awscli` and return stdout
