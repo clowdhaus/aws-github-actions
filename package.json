@@ -28,9 +28,8 @@
     "s3_sync"
   ],
   "scripts": {
-    "all": "npm run lint && npm run test && npm run build && npm run compile",
-    "build": "npm run build --workspace=packages/awscli-core",
-    "test": "vitest run --passWithNoTests",
+    "all": "npm run lint && npm run test && npm run compile",
+    "test": "vitest run",
     "compile": "npm run compile --workspaces --if-present",
     "lint": "eslint . --quiet --fix"
   },

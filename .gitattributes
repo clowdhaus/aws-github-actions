@@ -2,4 +2,3 @@ awscli/dist/* linguist-generated
 cloudfront_invalidate/dist/* linguist-generated
 iam_access_credentials/dist/* linguist-generated
 s3_sync/dist/* linguist-generated
-packages/awscli-core/lib/* linguist-generated
