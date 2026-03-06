@@ -12,5 +12,5 @@
     "noImplicitReturns": true
   },
   "include": ["packages/**/*.ts", "awscli/**/*.ts", "cloudfront_invalidate/**/*.ts", "iam_access_credentials/**/*.ts", "s3_sync/**/*.ts"],
-  "exclude": ["node_modules", "**/dist/**", "**/lib/**"]
+  "exclude": ["node_modules", "**/dist/**", "**/lib/**", "**/*.test.ts"]
 }
