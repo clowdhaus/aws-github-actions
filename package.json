@@ -35,15 +35,15 @@
     "lint": "eslint . --quiet --fix"
   },
   "dependencies": {
-    "@actions/core": "^3.0.0"
+    "@actions/core": "^3.0.1"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
-    "@types/node": "^25.3.5",
-    "esbuild": "^0.27.3",
-    "eslint": "^10.0.2",
-    "typescript": "^5.9.3",
-    "typescript-eslint": "^8.56.1",
-    "vitest": "^4.0.18"
+    "@types/node": "^25.6.0",
+    "esbuild": "^0.28.0",
+    "eslint": "^10.2.1",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.59.0",
+    "vitest": "^4.1.5"
   }
 }
