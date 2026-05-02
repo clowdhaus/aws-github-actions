@@ -34,7 +34,7 @@ jobs:
 
       - name: Determine next version
         id: git-cliff
-        uses: orhun/git-cliff-action@c93ef52f3d0ddcdcc9bd5447d98d458a11cd4f72 # v4
+        uses: orhun/git-cliff-action@f50e11560dce63f7c33227798f90b924471a88b5 # v4
         with:
           config: cliff.toml
           args: --bump --unreleased
@@ -43,7 +43,7 @@ jobs:
 
       - name: Create release
         if: steps.git-cliff.outputs.version != '' && steps.git-cliff.outputs.content != ''
-        uses: softprops/action-gh-release@a06a81a03ee405af7f2048a818ed3f03bbf83c7b # v2
+        uses: softprops/action-gh-release@b4309332981a82ec1c5618f44dd2e27cc8bfbfda # v2
         with:
           tag_name: ${{ steps.git-cliff.outputs.version }}
           body: ${{ steps.git-cliff.outputs.content }}
