@@ -10,6 +10,6 @@
   },
   "dependencies": {
     "@aws-sdk/client-sts": "^3.1003.0",
-    "uuid": "^13.0.0"
+    "uuid": "^14.0.0"
   }
 }
