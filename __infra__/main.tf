@@ -4,7 +4,7 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 3.0"
+      version = "~> 6.0"
     }
   }
 
@@ -27,7 +27,7 @@ provider "aws" {
 
 locals {
   account_id  = data.aws_caller_identity.current.account_id
-  region      = data.aws_region.current.name
+  region      = data.aws_region.current.region
   environment = "nonprod"
   name        = "aws-github-actions"
 }
@@ -53,7 +53,7 @@ module "tags" {
 
 module "ec2_test_bucket" {
   source  = "terraform-aws-modules/s3-bucket/aws"
-  version = "~> 2.14"
+  version = "~> 5.0"
 
   bucket = "${local.name}-${local.account_id}-${local.region}"
   acl    = "private"
