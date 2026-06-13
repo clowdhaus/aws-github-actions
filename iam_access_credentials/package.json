@@ -9,7 +9,7 @@
     "compile": "esbuild index.ts --bundle --platform=node --target=node24 --minify --outfile=dist/index.js"
   },
   "dependencies": {
-    "@aws-sdk/client-sts": "^3.1057.0",
+    "@aws-sdk/client-sts": "^3.1068.0",
     "uuid": "^14.0.0"
   }
 }
