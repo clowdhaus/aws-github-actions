@@ -39,11 +39,11 @@
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
-    "@types/node": "^26.1.2",
-    "esbuild": "^0.28.1",
-    "eslint": "^10.8.0",
+    "@types/node": "^26.2.0",
+    "esbuild": "^0.28.2",
+    "eslint": "^10.8.1",
     "typescript": "^7.0.2",
-    "typescript-eslint": "^8.66.0",
+    "typescript-eslint": "^8.67.0",
     "vitest": "^4.1.10"
   }
 }
